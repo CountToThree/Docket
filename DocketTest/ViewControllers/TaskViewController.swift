@@ -40,11 +40,18 @@ class TaskViewController: UITableViewController {
                 NotificationCenter.default.removeObserver(observer)
             }
         }
+        saveData()
     }
     
     //MARK: - TableView Datasource Methods
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskPrototype") as! TaskCell
+        cell.setupCheckBox()
+        if tasks[indexPath.row].done {
+            cell.checkBoxImage.alpha = 1.0
+        } else {
+            cell.checkBoxImage.alpha = 0.0
+        }
         cell.taskTitleLabel.text = tasks[indexPath.row].title
         cell.taskInfoLabel.text = tasks[indexPath.row].desc
         return cell
@@ -66,6 +73,17 @@ class TaskViewController: UITableViewController {
         }
         action.backgroundColor = UIColor(red: 249/255, green: 122/255, blue: 122/255, alpha: 1.0)
         return [action]
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("selected \(indexPath.row)")
+        tasks[indexPath.row].done = !tasks[indexPath.row].done
+        let cell = tableView.cellForRow(at: indexPath) as! TaskCell
+        if tasks[indexPath.row].done {
+            cell.checkBoxImage.taskComplete()
+        } else {
+            cell.checkBoxImage.taskNotComplete()
+        }
     }
     
     //MARK: - Data Manipulation Methods
@@ -102,10 +120,11 @@ class TaskViewController: UITableViewController {
             let newTaskData = notification.object as! NewTaskViewController
             let newItem = Task(context: self.context)
             newItem.title = newTaskData.taskNameTF.text!
-            newItem.done = true
+            newItem.done = false
             if let info = newTaskData.taskInfoTF.text {
                 newItem.desc = info
             }
+            newItem.priority = newTaskData.prioritySlider.value
             newItem.parentList = self.selectedList
             self.tasks.append(newItem)
             self.saveData()

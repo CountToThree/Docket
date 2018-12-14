@@ -11,5 +11,19 @@ import UIKit
 class TaskCell: UITableViewCell {
     @IBOutlet weak var taskTitleLabel: UILabel!
     @IBOutlet weak var taskInfoLabel: UILabel!
+    @IBOutlet weak var checkBox: CheckBox!
+    @IBOutlet weak var checkBoxImage: CustomCheckBox!
     
+    func setupCheckBox() {
+        checkBox.setup()
+        checkBoxImage.setup()
+    }
+    
+    func completed() {
+        
+    }
+    
+    func notCompleted() {
+        
+    }
 }

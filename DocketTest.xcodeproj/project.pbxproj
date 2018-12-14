@@ -13,16 +13,16 @@
 		7919B0F921AD0F8300E7DE99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7919B0F721AD0F8300E7DE99 /* Main.storyboard */; };
 		7919B0FB21AD0F8700E7DE99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7919B0FA21AD0F8700E7DE99 /* Assets.xcassets */; };
 		7919B0FE21AD0F8700E7DE99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7919B0FC21AD0F8700E7DE99 /* LaunchScreen.storyboard */; };
+		7925B68B21C29BA200F80EE9 /* CustomCheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7925B68A21C29BA200F80EE9 /* CustomCheckBox.swift */; };
 		7946E0A521B5966000E08B9C /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7946E0A321B5966000E08B9C /* CoreDataModel.xcdatamodeld */; };
 		7949EE2C21ADA55700F9CACB /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949EE2B21ADA55700F9CACB /* ListCell.swift */; };
 		7949EE2E21AE67AF00F9CACB /* NewListPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949EE2D21AE67AF00F9CACB /* NewListPopUp.swift */; };
 		797C487521B077F2001462A0 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797C487421B077F2001462A0 /* NewTaskViewController.swift */; };
+		7996A63621C3E04D00D173BA /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7996A63521C3E04D00D173BA /* CheckBox.swift */; };
 		79E7D9DA21B03092003D280C /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E7D9D921B03092003D280C /* TaskViewController.swift */; };
 		79E7D9DC21B030FD003D280C /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E7D9DB21B030FD003D280C /* TaskCell.swift */; };
 		79E7D9DE21B039D7003D280C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E7D9DD21B039D7003D280C /* CustomTextField.swift */; };
 		79EA0E0821AF0DAA003177B1 /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EA0E0721AF0DAA003177B1 /* NotificationNameExtension.swift */; };
-		79FFB93E21B48169001368E8 /* CustomList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FFB93D21B48169001368E8 /* CustomList.swift */; };
-		79FFB94021B484B3001368E8 /* CustomTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FFB93F21B484B3001368E8 /* CustomTask.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,16 +34,16 @@
 		7919B0FA21AD0F8700E7DE99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7919B0FD21AD0F8700E7DE99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7919B0FF21AD0F8700E7DE99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7925B68A21C29BA200F80EE9 /* CustomCheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCheckBox.swift; sourceTree = "<group>"; };
 		7946E0A421B5966000E08B9C /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		7949EE2B21ADA55700F9CACB /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		7949EE2D21AE67AF00F9CACB /* NewListPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListPopUp.swift; sourceTree = "<group>"; };
 		797C487421B077F2001462A0 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
+		7996A63521C3E04D00D173BA /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		79E7D9D921B03092003D280C /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		79E7D9DB21B030FD003D280C /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		79E7D9DD21B039D7003D280C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		79EA0E0721AF0DAA003177B1 /* NotificationNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameExtension.swift; sourceTree = "<group>"; };
-		79FFB93D21B48169001368E8 /* CustomList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomList.swift; sourceTree = "<group>"; };
-		79FFB93F21B484B3001368E8 /* CustomTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTask.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,8 +115,8 @@
 				7949EE2B21ADA55700F9CACB /* ListCell.swift */,
 				79E7D9DB21B030FD003D280C /* TaskCell.swift */,
 				79E7D9DD21B039D7003D280C /* CustomTextField.swift */,
-				79FFB93D21B48169001368E8 /* CustomList.swift */,
-				79FFB93F21B484B3001368E8 /* CustomTask.swift */,
+				7925B68A21C29BA200F80EE9 /* CustomCheckBox.swift */,
+				7996A63521C3E04D00D173BA /* CheckBox.swift */,
 			);
 			path = CustomClasses;
 			sourceTree = "<group>";
@@ -207,11 +207,11 @@
 				7919B0F621AD0F8300E7DE99 /* HomeViewController.swift in Sources */,
 				7919B0F421AD0F8300E7DE99 /* AppDelegate.swift in Sources */,
 				797C487521B077F2001462A0 /* NewTaskViewController.swift in Sources */,
-				79FFB94021B484B3001368E8 /* CustomTask.swift in Sources */,
 				79E7D9DE21B039D7003D280C /* CustomTextField.swift in Sources */,
+				7925B68B21C29BA200F80EE9 /* CustomCheckBox.swift in Sources */,
+				7996A63621C3E04D00D173BA /* CheckBox.swift in Sources */,
 				7949EE2E21AE67AF00F9CACB /* NewListPopUp.swift in Sources */,
 				79EA0E0821AF0DAA003177B1 /* NotificationNameExtension.swift in Sources */,
-				79FFB93E21B48169001368E8 /* CustomList.swift in Sources */,
 				79E7D9DA21B03092003D280C /* TaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

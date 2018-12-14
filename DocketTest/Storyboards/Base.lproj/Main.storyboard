@@ -146,7 +146,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskPrototype" rowHeight="65" id="5B1-cK-O7s" customClass="TaskCell" customModule="DocketTest" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="taskPrototype" rowHeight="65" id="5B1-cK-O7s" customClass="TaskCell" customModule="DocketTest" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5B1-cK-O7s" id="A8H-Lm-TEZ">
@@ -173,6 +173,27 @@
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xe8-ts-jCQ" customClass="CheckBox" customModule="DocketTest" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="22" width="20" height="20"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="64z-f0-40P" customClass="CustomCheckBox" customModule="DocketTest" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="FKi-GI-HBk"/>
+                                                        <constraint firstAttribute="width" constant="20" id="G54-WN-GX6"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="20" id="ALX-GR-7gL"/>
+                                                <constraint firstAttribute="trailing" secondItem="64z-f0-40P" secondAttribute="trailing" id="Xt1-Uk-1Ea"/>
+                                                <constraint firstAttribute="bottom" secondItem="64z-f0-40P" secondAttribute="bottom" id="dLF-xW-MVy"/>
+                                                <constraint firstAttribute="height" constant="20" id="ptE-c5-139"/>
+                                                <constraint firstItem="64z-f0-40P" firstAttribute="top" secondItem="xe8-ts-jCQ" secondAttribute="top" id="vhF-4t-dId"/>
+                                                <constraint firstItem="64z-f0-40P" firstAttribute="leading" secondItem="xe8-ts-jCQ" secondAttribute="leading" id="yDb-7J-brG"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="n8u-fb-ebV" firstAttribute="leading" secondItem="A8H-Lm-TEZ" secondAttribute="leading" constant="63" id="7rr-4p-dZY"/>
@@ -180,10 +201,14 @@
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="n8u-fb-ebV" secondAttribute="trailing" constant="138" id="IaL-Be-LCa"/>
                                         <constraint firstItem="Dv1-4e-kj8" firstAttribute="top" secondItem="A8H-Lm-TEZ" secondAttribute="top" constant="8" id="QOh-6b-cB3"/>
                                         <constraint firstItem="Dv1-4e-kj8" firstAttribute="leading" secondItem="A8H-Lm-TEZ" secondAttribute="leading" constant="65" id="QPe-Ok-OvN"/>
+                                        <constraint firstItem="xe8-ts-jCQ" firstAttribute="top" secondItem="A8H-Lm-TEZ" secondAttribute="topMargin" constant="11" id="Te3-kC-CVf"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Dv1-4e-kj8" secondAttribute="trailing" constant="141" id="pV9-5c-cez"/>
+                                        <constraint firstItem="xe8-ts-jCQ" firstAttribute="leading" secondItem="A8H-Lm-TEZ" secondAttribute="leadingMargin" id="zIl-w1-1Wf"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="checkBox" destination="xe8-ts-jCQ" id="Eaw-7Q-clR"/>
+                                    <outlet property="checkBoxImage" destination="64z-f0-40P" id="kom-nn-Pgm"/>
                                     <outlet property="taskInfoLabel" destination="n8u-fb-ebV" id="q4x-oE-dcF"/>
                                     <outlet property="taskTitleLabel" destination="Dv1-4e-kj8" id="8ZA-8X-2Kx"/>
                                 </connections>
@@ -274,8 +299,8 @@
                                 <color key="minimumTrackTintColor" red="0.0" green="0.58296249489999996" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="maximumTrackTintColor" red="0.64705882349999999" green="0.87843137250000003" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Infos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9An-q5-sMT">
-                                <rect key="frame" x="32" y="256" width="32" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9An-q5-sMT">
+                                <rect key="frame" x="32" y="256" width="46" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="IA5-6d-b39"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="SFM-gk-bmm"/>
