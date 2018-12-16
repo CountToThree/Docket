@@ -272,20 +272,20 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Infos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xop-8J-YLR">
-                                <rect key="frame" x="32" y="164" width="32" height="15"/>
+                                <rect key="frame" x="32" y="164" width="31.5" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="13m-SX-QEa"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="gaM-0d-E7v"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="31.5" id="5u7-U2-bIc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="13"/>
                                 <color key="textColor" red="0.64705882349999999" green="0.87843137250000003" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.64705882349999999" green="0.87843137250000003" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNa-Zq-m99">
-                                <rect key="frame" x="32" y="76" width="36" height="15"/>
+                                <rect key="frame" x="32" y="76" width="35.5" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="ADz-ug-w61"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="36" id="crV-gi-dGx"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="35.5" id="UbO-zF-Rma"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="13"/>
                                 <color key="textColor" red="0.64705882349999999" green="0.87843137250000003" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -300,15 +300,47 @@
                                 <color key="maximumTrackTintColor" red="0.64705882349999999" green="0.87843137250000003" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9An-q5-sMT">
-                                <rect key="frame" x="32" y="256" width="46" height="15"/>
+                                <rect key="frame" x="32" y="256" width="103" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="IA5-6d-b39"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="SFM-gk-bmm"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="103" id="SFM-gk-bmm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="13"/>
                                 <color key="textColor" red="0.64705882349999999" green="0.87843137250000003" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.64705882349999999" green="0.87843137250000003" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort By" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpC-Mp-JH0">
+                                <rect key="frame" x="32" y="348" width="46.5" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="46.5" id="Gcp-ll-Rzo"/>
+                                    <constraint firstAttribute="height" constant="15" id="oxc-Hp-vZ0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="13"/>
+                                <color key="textColor" red="0.64705882349999999" green="0.87843137250000003" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="0.64705882349999999" green="0.87843137250000003" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZBV-TG-uWW" customClass="SortingButton" customModule="DocketTest" customModuleProvider="target">
+                                <rect key="frame" x="33" y="379" width="74" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <state key="normal" title="Priority">
+                                    <color key="titleColor" red="0.64705882349999999" green="0.87843137250000003" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="PriorityBtnPressed:" destination="ghG-NA-71u" eventType="touchUpInside" id="yru-75-1mf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRG-Qf-qcj" customClass="SortingButton" customModule="DocketTest" customModuleProvider="target">
+                                <rect key="frame" x="133" y="379" width="74" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <state key="normal" title="Creation">
+                                    <color key="titleColor" red="0.64705882349999999" green="0.87843137250000003" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="CreationBtnPressed:" destination="ghG-NA-71u" eventType="touchUpInside" id="UEg-NR-wiF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -316,7 +348,9 @@
                             <constraint firstItem="ecv-xh-fOs" firstAttribute="bottom" secondItem="T33-hc-A6C" secondAttribute="bottom" constant="20" id="9QS-WP-xHM"/>
                             <constraint firstItem="pbW-HQ-DgM" firstAttribute="leading" secondItem="ecv-xh-fOs" secondAttribute="leading" constant="32" id="Bha-Ry-Mfn"/>
                             <constraint firstItem="ifD-st-geh" firstAttribute="top" secondItem="ecv-xh-fOs" secondAttribute="top" constant="215" id="Cs5-Qx-3QN"/>
+                            <constraint firstItem="dpC-Mp-JH0" firstAttribute="leading" secondItem="ecv-xh-fOs" secondAttribute="leading" constant="32" id="GNZ-iv-TkR"/>
                             <constraint firstItem="ecv-xh-fOs" firstAttribute="trailing" secondItem="ifD-st-geh" secondAttribute="trailing" constant="32" id="HYb-UA-z0v"/>
+                            <constraint firstItem="ecv-xh-fOs" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dpC-Mp-JH0" secondAttribute="trailing" constant="240" id="Hk3-vj-kCu"/>
                             <constraint firstItem="pbW-HQ-DgM" firstAttribute="top" secondItem="I0e-lI-eEF" secondAttribute="bottom" constant="47" id="IEM-ju-uOl"/>
                             <constraint firstItem="ecv-xh-fOs" firstAttribute="trailing" secondItem="pbW-HQ-DgM" secondAttribute="trailing" constant="33" id="If4-vz-FEU"/>
                             <constraint firstItem="ifD-st-geh" firstAttribute="leading" secondItem="ecv-xh-fOs" secondAttribute="leading" constant="32" id="N6h-jg-CA0"/>
@@ -327,7 +361,8 @@
                             <constraint firstItem="pbW-HQ-DgM" firstAttribute="top" secondItem="Xop-8J-YLR" secondAttribute="bottom" constant="8" id="c6Y-EQ-GjL"/>
                             <constraint firstItem="T33-hc-A6C" firstAttribute="leading" secondItem="ecv-xh-fOs" secondAttribute="leading" constant="26" id="hFp-uu-neB"/>
                             <constraint firstItem="hNa-Zq-m99" firstAttribute="leading" secondItem="ecv-xh-fOs" secondAttribute="leading" constant="32" id="jVq-n8-vHa"/>
-                            <constraint firstItem="ecv-xh-fOs" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9An-q5-sMT" secondAttribute="trailing" constant="256" id="pPd-0e-dyU"/>
+                            <constraint firstItem="dpC-Mp-JH0" firstAttribute="top" secondItem="ifD-st-geh" secondAttribute="bottom" constant="39" id="oGu-OC-S2p"/>
+                            <constraint firstItem="ecv-xh-fOs" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9An-q5-sMT" secondAttribute="trailing" constant="240" id="pPd-0e-dyU"/>
                             <constraint firstItem="ecv-xh-fOs" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hNa-Zq-m99" secondAttribute="trailing" constant="252" id="sIc-rT-jjP"/>
                             <constraint firstItem="9An-q5-sMT" firstAttribute="leading" secondItem="ecv-xh-fOs" secondAttribute="leading" constant="32" id="tGo-Of-TKq"/>
                             <constraint firstItem="I0e-lI-eEF" firstAttribute="top" secondItem="ecv-xh-fOs" secondAttribute="top" constant="35" id="xkp-qS-wsz"/>
@@ -338,6 +373,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="New Task" id="Xay-Cm-Zq1"/>
                     <connections>
+                        <outlet property="CreationSButton" destination="kRG-Qf-qcj" id="5VT-gN-ob0"/>
+                        <outlet property="PrioritySButton" destination="ZBV-TG-uWW" id="EWJ-di-elU"/>
                         <outlet property="prioritySlider" destination="ifD-st-geh" id="8lU-OI-JaB"/>
                         <outlet property="taskInfoTF" destination="pbW-HQ-DgM" id="qL0-GF-DB4"/>
                         <outlet property="taskNameTF" destination="I0e-lI-eEF" id="yb8-N5-RMT"/>
@@ -345,7 +382,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g2M-3a-qaH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2581.875" y="469.01408450704224"/>
+            <point key="canvasLocation" x="2581.5999999999999" y="468.21589205397305"/>
         </scene>
     </scenes>
 </document>

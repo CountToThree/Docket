@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 
-
 class HomeViewController: UITableViewController {
     
     var lists = [List]()

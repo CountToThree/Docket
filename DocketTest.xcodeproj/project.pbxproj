@@ -17,6 +17,8 @@
 		7946E0A521B5966000E08B9C /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7946E0A321B5966000E08B9C /* CoreDataModel.xcdatamodeld */; };
 		7949EE2C21ADA55700F9CACB /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949EE2B21ADA55700F9CACB /* ListCell.swift */; };
 		7949EE2E21AE67AF00F9CACB /* NewListPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949EE2D21AE67AF00F9CACB /* NewListPopUp.swift */; };
+		7963AFB321C4196D009452DE /* SortByEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7963AFB221C4196D009452DE /* SortByEnum.swift */; };
+		796BA1CF21C593A700432100 /* SortingButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796BA1CE21C593A700432100 /* SortingButtons.swift */; };
 		797C487521B077F2001462A0 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797C487421B077F2001462A0 /* NewTaskViewController.swift */; };
 		7996A63621C3E04D00D173BA /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7996A63521C3E04D00D173BA /* CheckBox.swift */; };
 		79E7D9DA21B03092003D280C /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E7D9D921B03092003D280C /* TaskViewController.swift */; };
@@ -38,6 +40,8 @@
 		7946E0A421B5966000E08B9C /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		7949EE2B21ADA55700F9CACB /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		7949EE2D21AE67AF00F9CACB /* NewListPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListPopUp.swift; sourceTree = "<group>"; };
+		7963AFB221C4196D009452DE /* SortByEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortByEnum.swift; sourceTree = "<group>"; };
+		796BA1CE21C593A700432100 /* SortingButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingButtons.swift; sourceTree = "<group>"; };
 		797C487421B077F2001462A0 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		7996A63521C3E04D00D173BA /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		79E7D9D921B03092003D280C /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 				790152BB21AD63C50057F97C /* ViewControllers */,
 				7949EE2A21ADA53100F9CACB /* CustomClasses */,
 				79EA0E0621AF0D85003177B1 /* Extensions */,
+				7963AFB121C41926009452DE /* HelpUnits */,
 				7917471421AEFBB800AFBA37 /* Storyboards */,
 				7919B0FA21AD0F8700E7DE99 /* Assets.xcassets */,
 				7919B0FC21AD0F8700E7DE99 /* LaunchScreen.storyboard */,
@@ -112,13 +117,30 @@
 		7949EE2A21ADA53100F9CACB /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
-				7949EE2B21ADA55700F9CACB /* ListCell.swift */,
-				79E7D9DB21B030FD003D280C /* TaskCell.swift */,
+				796BA1D021C5A9A100432100 /* TableViewCells */,
 				79E7D9DD21B039D7003D280C /* CustomTextField.swift */,
+				796BA1CE21C593A700432100 /* SortingButtons.swift */,
 				7925B68A21C29BA200F80EE9 /* CustomCheckBox.swift */,
 				7996A63521C3E04D00D173BA /* CheckBox.swift */,
 			);
 			path = CustomClasses;
+			sourceTree = "<group>";
+		};
+		7963AFB121C41926009452DE /* HelpUnits */ = {
+			isa = PBXGroup;
+			children = (
+				7963AFB221C4196D009452DE /* SortByEnum.swift */,
+			);
+			path = HelpUnits;
+			sourceTree = "<group>";
+		};
+		796BA1D021C5A9A100432100 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				7949EE2B21ADA55700F9CACB /* ListCell.swift */,
+				79E7D9DB21B030FD003D280C /* TaskCell.swift */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 		79EA0E0621AF0D85003177B1 /* Extensions */ = {
@@ -201,7 +223,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7963AFB321C4196D009452DE /* SortByEnum.swift in Sources */,
 				7949EE2C21ADA55700F9CACB /* ListCell.swift in Sources */,
+				796BA1CF21C593A700432100 /* SortingButtons.swift in Sources */,
 				79E7D9DC21B030FD003D280C /* TaskCell.swift in Sources */,
 				7946E0A521B5966000E08B9C /* CoreDataModel.xcdatamodeld in Sources */,
 				7919B0F621AD0F8300E7DE99 /* HomeViewController.swift in Sources */,
@@ -369,6 +393,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8CQ86K394W;
 				INFOPLIST_FILE = DocketTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -387,6 +412,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8CQ86K394W;
 				INFOPLIST_FILE = DocketTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -126,10 +126,23 @@ class TaskViewController: UITableViewController {
             }
             newItem.priority = newTaskData.prioritySlider.value
             newItem.parentList = self.selectedList
+            newItem.createdAt = Date()
+            
             self.tasks.append(newItem)
+            self.sortListBy(.priority)
             self.saveData()
             self.tableView.reloadData()
             NotificationCenter.default.removeObserver(self.observer as Any)
         })
+    }
+    
+    func sortListBy(_ property: SortBy) {
+        if property == .priority {
+            tasks.sort(by: {
+                $0.priority < $1.priority
+            })
+        } else {
+            
+        }
     }
 }
