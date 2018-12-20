@@ -22,6 +22,8 @@ class HomeViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.navigationBar.barTintColor = lightGreen
+        
         loadData()
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
@@ -79,7 +81,7 @@ class HomeViewController: UITableViewController {
             self.lists.remove(at: indexPath.row)
             self.saveData()
         }
-        action.backgroundColor = UIColor(red: 249/255, green: 122/255, blue: 122/255, alpha: 1.0)
+        action.backgroundColor = lightRed
         return [action]
     }
     

@@ -10,14 +10,13 @@ import UIKit
 
 class SortingButton: UIButton {
     
-    var myColor = UIColor(red: 165/255, green: 209/255, blue: 176/255, alpha: 1.0)
     var active = false
     
     func setup() {
         self.layer.borderWidth = 1
-        self.layer.borderColor = myColor.cgColor
+        self.layer.borderColor = lightGreen.cgColor
         self.layer.cornerRadius = 3
-        self.tintColor = myColor
+        self.tintColor = lightGreen
     }
     
     func didSelect() {

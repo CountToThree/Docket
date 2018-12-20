@@ -10,14 +10,18 @@ import UIKit
 
 class CustomTextField: UITextField {
     
-    var myBorderColor = UIColor(red: 165/255, green: 209/255, blue: 176/255, alpha: 1.0)
+    var datePicker = UIDatePicker()
+    var isDatePicker = false
     
-    func setup() {
+    func setup(datePicker: Bool? = nil) {
         self.layer.borderWidth = 1
-        self.layer.borderColor = myBorderColor.cgColor
+        self.layer.borderColor = lightGreen.cgColor
         self.layer.cornerRadius = 1
         self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: self.frame.height))
         self.leftViewMode = .always
+        if let usesDatePicker = datePicker {
+            isDatePicker = usesDatePicker
+        }
         self.addDoneButtonOnKeyboard()
     }
     
@@ -27,7 +31,11 @@ class CustomTextField: UITextField {
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
-        done.tintColor = myBorderColor
+        if isDatePicker {
+            done.action = #selector(self.datePickerDoneAction)
+            setDatePicker()
+        }
+        done.tintColor = lightGreen
         let items = [flexSpace, done]
         doneToolbar.items = items
         doneToolbar.sizeToFit()
@@ -37,6 +45,20 @@ class CustomTextField: UITextField {
     
     @objc func doneButtonAction() {
         self.resignFirstResponder()
+    }
+    
+    //MARK: Date Picker Setup
+    @objc func datePickerDoneAction() {
+        print("date picker done action")
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy hh:mm a"
+        self.text = formatter.string(from: datePicker.date)
+        self.resignFirstResponder()
+    }
+    
+    func setDatePicker() {
+        datePicker.datePickerMode = .dateAndTime
+        self.inputView = datePicker
     }
     
 }

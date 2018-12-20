@@ -13,6 +13,6 @@ class CheckBox: UIView {
     func setup() {
         self.layer.cornerRadius = self.bounds.height / 2
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor(red: 165/255, green: 209/255, blue: 176/255, alpha: 1.0).cgColor
+        self.layer.borderColor = lightGreen.cgColor
     }
 }

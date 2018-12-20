@@ -7,38 +7,59 @@
 //
 
 import UIKit
+import UserNotifications
 
 class NewTaskViewController: UIViewController {
     
     @IBOutlet weak var taskNameTF: CustomTextField!
     @IBOutlet weak var taskInfoTF: CustomTextField!
     @IBOutlet weak var prioritySlider: UISlider!
-    @IBOutlet weak var PrioritySButton: SortingButton!
-    @IBOutlet weak var CreationSButton: SortingButton!
+    @IBOutlet weak var reminderTF: CustomTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         taskNameTF.setup()
         taskInfoTF.setup()
-        PrioritySButton.setup()
-        CreationSButton.setup()
-        CreationSButton.didSelect()
-        PrioritySButton.didUnselect()
-    }
-    @IBAction func PriorityBtnPressed(_ sender: Any) {
-        PrioritySButton.didSelect()
-        CreationSButton.didUnselect()
+        reminderTF.setup(datePicker: true)
     }
     
-    @IBAction func CreationBtnPressed(_ sender: Any) {
-        PrioritySButton.didUnselect()
-        CreationSButton.didSelect()
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        setNotification()
+        
     }
-    
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         
         NotificationCenter.default.post(name: .saveNewTaskItems, object: self)
         navigationController?.popViewController(animated: true)
     }
+    
+    func setNotification() {
+        if reminderTF.text != "" {
+            print("Notification")
+            
+            //MARK: Notification Content
+            let content = UNMutableNotificationContent()
+            content.title = "\(taskNameTF.text ?? "")"
+            content.body = "\(taskInfoTF.text ?? "")"
+            content.sound = UNNotificationSound.default
+            content.badge = 1
+            
+            //MARK: Notification Trigger
+            let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: reminderTF.datePicker.date)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+            
+            //MARK: Notification Request
+            let identifier = UUID().uuidString
+            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+            
+            UNUserNotificationCenter.current().add(request) { (error) in
+                if let error = error {
+                    print("Error \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+    
 }

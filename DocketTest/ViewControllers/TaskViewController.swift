@@ -71,7 +71,7 @@ class TaskViewController: UITableViewController {
             self.tasks.remove(at: indexPath.row)
             self.saveData()
         }
-        action.backgroundColor = UIColor(red: 249/255, green: 122/255, blue: 122/255, alpha: 1.0)
+        action.backgroundColor = lightRed
         return [action]
     }
     
@@ -127,22 +127,18 @@ class TaskViewController: UITableViewController {
             newItem.priority = newTaskData.prioritySlider.value
             newItem.parentList = self.selectedList
             newItem.createdAt = Date()
-            
+            print(newItem.priority)
             self.tasks.append(newItem)
-            self.sortListBy(.priority)
+            self.sortList()
             self.saveData()
             self.tableView.reloadData()
             NotificationCenter.default.removeObserver(self.observer as Any)
         })
     }
     
-    func sortListBy(_ property: SortBy) {
-        if property == .priority {
-            tasks.sort(by: {
-                $0.priority < $1.priority
-            })
-        } else {
-            
-        }
+    func sortList() {
+        tasks.sort(by: {
+            $0.priority > $1.priority
+        })
     }
 }

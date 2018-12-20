@@ -8,14 +8,33 @@
 
 import UIKit
 import CoreData
+import Firebase
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDelegate {
 
     var window: UIWindow?
+    let notificationCenter = UNUserNotificationCenter.current()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Override point for customization after application launch.        
+        
+        IQKeyboardManager.shared.enable = true
+        
+        //MARK: Local notification setup
+        let options: UNAuthorizationOptions = [.alert, .sound, .badge]
+        notificationCenter.requestAuthorization(options: options) {
+            (didAllow, error) in
+            if !didAllow {
+                print("User has declined notifications")
+            }
+        }
+        
+        //MARK: initialize Firebase
+        FirebaseApp.configure()
+        let myDatabase = Database.database().reference()
+        myDatabase.setValue("This is Data")
         
         return true
     }
