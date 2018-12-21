@@ -16,21 +16,34 @@ class NewTaskViewController: UIViewController {
     @IBOutlet weak var prioritySlider: UISlider!
     @IBOutlet weak var reminderTF: CustomTextField!
     
+    var taskTitle = ""
+    var taskInfo = ""
+    var priorityValue = 5.0 as Float
+    var reminderDate = ""
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+    var notID: String?
+    var taskToDelete: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         taskNameTF.setup()
         taskInfoTF.setup()
         reminderTF.setup(datePicker: true)
+        setValues()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        setNotification()
-        
+    func setValues() {
+        taskNameTF.text = taskTitle
+        taskInfoTF.text = taskInfo
+        prioritySlider.value = priorityValue
+        reminderTF.text = reminderDate
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         
+        setNotification()
         NotificationCenter.default.post(name: .saveNewTaskItems, object: self)
         navigationController?.popViewController(animated: true)
     }
@@ -51,8 +64,8 @@ class NewTaskViewController: UIViewController {
             let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
             
             //MARK: Notification Request
-            let identifier = UUID().uuidString
-            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+            notID = UUID().uuidString
+            let request = UNNotificationRequest(identifier: notID!, content: content, trigger: trigger)
             
             UNUserNotificationCenter.current().add(request) { (error) in
                 if let error = error {
@@ -61,5 +74,4 @@ class NewTaskViewController: UIViewController {
             }
         }
     }
-    
 }

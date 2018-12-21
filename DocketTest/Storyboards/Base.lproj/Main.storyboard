@@ -215,6 +215,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="ghG-NA-71u" kind="show" identifier="editTaskSegue" id="fjb-7q-E82"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2fQ-CF-b49" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -326,7 +329,7 @@
                                 <color key="textColor" red="0.64705882349999999" green="0.87843137250000003" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.64705882349999999" green="0.87843137250000003" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Reminder Date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="icY-xP-wkn" customClass="CustomTextField" customModule="DocketTest" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Reminder Date" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="icY-xP-wkn" customClass="CustomTextField" customModule="DocketTest" customModuleProvider="target">
                                 <rect key="frame" x="32" y="383" width="255" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="bgc-i9-g1p"/>
@@ -392,4 +395,7 @@
     <resources>
         <image name="MenuSymbol" width="18" height="15"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="fjb-7q-E82"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -49,6 +49,7 @@ class HomeViewController: UITableViewController {
         if let observer = observer {
             NotificationCenter.default.removeObserver(observer)
         }
+        saveData()
     }
 
     //MARK: - TableView Setup Methods

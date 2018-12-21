@@ -34,7 +34,6 @@
 		7946E0A521B5966000E08B9C /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7946E0A321B5966000E08B9C /* CoreDataModel.xcdatamodeld */; };
 		7949EE2C21ADA55700F9CACB /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949EE2B21ADA55700F9CACB /* ListCell.swift */; };
 		7949EE2E21AE67AF00F9CACB /* NewListPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949EE2D21AE67AF00F9CACB /* NewListPopUp.swift */; };
-		7963AFB321C4196D009452DE /* SortByEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7963AFB221C4196D009452DE /* SortByEnum.swift */; };
 		797C487521B077F2001462A0 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797C487421B077F2001462A0 /* NewTaskViewController.swift */; };
 		7996A63621C3E04D00D173BA /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7996A63521C3E04D00D173BA /* CheckBox.swift */; };
 		79DBDC6721C70937003E3FA9 /* PublicVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DBDC6621C70937003E3FA9 /* PublicVariables.swift */; };
@@ -79,7 +78,6 @@
 		7946E0A421B5966000E08B9C /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		7949EE2B21ADA55700F9CACB /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		7949EE2D21AE67AF00F9CACB /* NewListPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListPopUp.swift; sourceTree = "<group>"; };
-		7963AFB221C4196D009452DE /* SortByEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortByEnum.swift; sourceTree = "<group>"; };
 		797C487421B077F2001462A0 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		7996A63521C3E04D00D173BA /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		79DBDC6621C70937003E3FA9 /* PublicVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicVariables.swift; sourceTree = "<group>"; };
@@ -107,8 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				7919B0F521AD0F8300E7DE99 /* HomeViewController.swift */,
-				79E7D9D921B03092003D280C /* TaskViewController.swift */,
 				7949EE2D21AE67AF00F9CACB /* NewListPopUp.swift */,
+				79E7D9D921B03092003D280C /* TaskViewController.swift */,
 				797C487421B077F2001462A0 /* NewTaskViewController.swift */,
 			);
 			path = ViewControllers;
@@ -239,7 +237,6 @@
 		7963AFB121C41926009452DE /* HelpUnits */ = {
 			isa = PBXGroup;
 			children = (
-				7963AFB221C4196D009452DE /* SortByEnum.swift */,
 				79DBDC6621C70937003E3FA9 /* PublicVariables.swift */,
 			);
 			path = HelpUnits;
@@ -415,7 +412,6 @@
 				793806B621C94B88002728EB /* IQNSArray+Sort.swift in Sources */,
 				793806AB21C94B88002728EB /* IQUIView+IQKeyboardToolbar.swift in Sources */,
 				793806AC21C94B88002728EB /* IQInvocation.swift in Sources */,
-				7963AFB321C4196D009452DE /* SortByEnum.swift in Sources */,
 				7949EE2C21ADA55700F9CACB /* ListCell.swift in Sources */,
 				793806B121C94B88002728EB /* IQKeyboardManager.swift in Sources */,
 				793806AE21C94B88002728EB /* IQKeyboardManagerConstants.swift in Sources */,

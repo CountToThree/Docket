@@ -12,5 +12,6 @@ extension Notification.Name {
     static let saveNewListName = Notification.Name("saveNewListName")
     static let saveNewTaskItems = Notification.Name("saveNewTaskItems")
     static let saveData = Notification.Name("saveData")
+    static let editTaskData = Notification.Name("editTaskData")
 
 }

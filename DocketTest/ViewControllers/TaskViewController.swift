@@ -8,10 +8,12 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 class TaskViewController: UITableViewController {
 
     var tasks = [Task]()
+    var rowToEdit: Int!
     
     var selectedList: List? {
         didSet {
@@ -66,13 +68,22 @@ class TaskViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let action = UITableViewRowAction(style: .normal, title: "Delete") { (action, index) in
+        let deleteAction = UITableViewRowAction(style: .normal, title: "Delete") { (action, index) in
             self.context.delete(self.tasks[indexPath.row])
             self.tasks.remove(at: indexPath.row)
+            if let id = self.tasks[indexPath.row].notificationID {
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
+            }
             self.saveData()
         }
-        action.backgroundColor = lightRed
-        return [action]
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (action, index) in
+            print("Edit Task at \(index.row)")
+            self.rowToEdit = index.row
+            self.performSegue(withIdentifier: "editTaskSegue", sender: self)
+        }
+        editAction.backgroundColor = lightGreen
+        deleteAction.backgroundColor = lightRed
+        return [deleteAction, editAction]
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -84,6 +95,27 @@ class TaskViewController: UITableViewController {
         } else {
             cell.checkBoxImage.taskNotComplete()
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! NewTaskViewController
+        if segue.identifier == "editTaskSegue" {
+            destinationVC.taskTitle = tasks[rowToEdit].title!
+            destinationVC.taskInfo = tasks[rowToEdit].desc!
+            destinationVC.priorityValue = tasks[rowToEdit].priority
+            if let date = tasks[rowToEdit].notificationDate {
+                destinationVC.reminderDate = dateToString(for: date)
+                let id = tasks[rowToEdit].notificationID
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id!])
+            }
+            destinationVC.taskToDelete = rowToEdit
+        }
+    }
+    
+    func dateToString(for Date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy hh:mm a"
+        return formatter.string(from: Date)
     }
     
     //MARK: - Data Manipulation Methods
@@ -123,10 +155,25 @@ class TaskViewController: UITableViewController {
             newItem.done = false
             if let info = newTaskData.taskInfoTF.text {
                 newItem.desc = info
+            } else {
+                if let reminder = newTaskData.reminderTF.text {
+                    newItem.desc = reminder
+                }
             }
             newItem.priority = newTaskData.prioritySlider.value
             newItem.parentList = self.selectedList
-            newItem.createdAt = Date()
+            if let id = newTaskData.notID {
+                newItem.notificationID = id
+                newItem.notificationDate = newTaskData.reminderTF.datePicker.date
+            }
+            
+            // delete Old Task
+            if let item = newTaskData.taskToDelete {
+                self.context.delete(self.tasks[item])
+                self.tasks.remove(at: item)
+
+            }
+
             print(newItem.priority)
             self.tasks.append(newItem)
             self.sortList()
