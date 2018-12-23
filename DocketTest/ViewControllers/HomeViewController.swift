@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 class HomeViewController: UITableViewController {
     
@@ -22,8 +23,12 @@ class HomeViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let backBtnImage = UIImage(named: "backButtonIcon")
         navigationController?.navigationBar.barTintColor = lightGreen
         
+        navigationController?.navigationBar.backIndicatorImage = backBtnImage
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = backBtnImage
+
         loadData()
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
@@ -79,6 +84,14 @@ class HomeViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let action = UITableViewRowAction(style: .normal, title: "Delete") { (action, index) in
             self.context.delete(self.lists[indexPath.row])
+            
+            let listTasks = self.lists[indexPath.row].tasks?.allObjects as! [Task]
+            for item in listTasks {
+                if let id = item.notificationID {
+                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
+                }
+            }
+            
             self.lists.remove(at: indexPath.row)
             self.saveData()
         }
@@ -106,7 +119,8 @@ class HomeViewController: UITableViewController {
     
     @IBAction func showMenu(_ sender: UIBarButtonItem) {
         // show Menu
-        
+        print("show Menu")
+        NotificationCenter.default.post(name: .toggleSideMenu, object: nil)
     }
 
     //MARK: - Model Manipulation Methods

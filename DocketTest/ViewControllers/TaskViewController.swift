@@ -26,6 +26,7 @@ class TaskViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.backBarButtonItem?.title = nil
         
     }
     

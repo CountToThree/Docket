@@ -18,12 +18,4 @@ class TaskCell: UITableViewCell {
         checkBox.setup()
         checkBoxImage.setup()
     }
-    
-    func completed() {
-        
-    }
-    
-    func notCompleted() {
-        
-    }
 }

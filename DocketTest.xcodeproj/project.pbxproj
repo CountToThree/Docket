@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		790C907021CEC8330036F72C /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C906F21CEC8330036F72C /* ContainerViewController.swift */; };
+		790C907221CED2290036F72C /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C907121CED2290036F72C /* SideMenuViewController.swift */; };
+		790C907421CEE87D0036F72C /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C907321CEE87D0036F72C /* MenuCell.swift */; };
 		7917471721AEFBF000AFBA37 /* ListPopUpViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7917471521AEFBF000AFBA37 /* ListPopUpViewController.storyboard */; };
 		7919B0F421AD0F8300E7DE99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7919B0F321AD0F8300E7DE99 /* AppDelegate.swift */; };
 		7919B0F621AD0F8300E7DE99 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7919B0F521AD0F8300E7DE99 /* HomeViewController.swift */; };
@@ -48,6 +51,9 @@
 /* Begin PBXFileReference section */
 		16E5CC778F6C205FA9B30549 /* Pods-DocketTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocketTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-DocketTest/Pods-DocketTest.release.xcconfig"; sourceTree = "<group>"; };
 		437F27D87D1D202C5A054241 /* Pods-DocketTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocketTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DocketTest/Pods-DocketTest.debug.xcconfig"; sourceTree = "<group>"; };
+		790C906F21CEC8330036F72C /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		790C907121CED2290036F72C /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		790C907321CEE87D0036F72C /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		7917471621AEFBF000AFBA37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = DocketTest/Storyboards/Base.lproj/ListPopUpViewController.storyboard; sourceTree = "<group>"; };
 		7919B0F021AD0F8300E7DE99 /* DocketTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DocketTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7919B0F321AD0F8300E7DE99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +110,8 @@
 		790152BB21AD63C50057F97C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				790C906F21CEC8330036F72C /* ContainerViewController.swift */,
+				790C907121CED2290036F72C /* SideMenuViewController.swift */,
 				7919B0F521AD0F8300E7DE99 /* HomeViewController.swift */,
 				7949EE2D21AE67AF00F9CACB /* NewListPopUp.swift */,
 				79E7D9D921B03092003D280C /* TaskViewController.swift */,
@@ -247,6 +255,7 @@
 			children = (
 				7949EE2B21ADA55700F9CACB /* ListCell.swift */,
 				79E7D9DB21B030FD003D280C /* TaskCell.swift */,
+				790C907321CEE87D0036F72C /* MenuCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -412,6 +421,7 @@
 				793806B621C94B88002728EB /* IQNSArray+Sort.swift in Sources */,
 				793806AB21C94B88002728EB /* IQUIView+IQKeyboardToolbar.swift in Sources */,
 				793806AC21C94B88002728EB /* IQInvocation.swift in Sources */,
+				790C907221CED2290036F72C /* SideMenuViewController.swift in Sources */,
 				7949EE2C21ADA55700F9CACB /* ListCell.swift in Sources */,
 				793806B121C94B88002728EB /* IQKeyboardManager.swift in Sources */,
 				793806AE21C94B88002728EB /* IQKeyboardManagerConstants.swift in Sources */,
@@ -431,12 +441,14 @@
 				797C487521B077F2001462A0 /* NewTaskViewController.swift in Sources */,
 				79E7D9DE21B039D7003D280C /* CustomTextField.swift in Sources */,
 				7925B68B21C29BA200F80EE9 /* CustomCheckBox.swift in Sources */,
+				790C907021CEC8330036F72C /* ContainerViewController.swift in Sources */,
 				7996A63621C3E04D00D173BA /* CheckBox.swift in Sources */,
 				7949EE2E21AE67AF00F9CACB /* NewListPopUp.swift in Sources */,
 				793806B421C94B88002728EB /* IQUITextFieldView+Additions.swift in Sources */,
 				79EA0E0821AF0DAA003177B1 /* NotificationNameExtension.swift in Sources */,
 				793806A721C94B88002728EB /* IQPreviousNextView.swift in Sources */,
 				793806B521C94B88002728EB /* IQUIView+Hierarchy.swift in Sources */,
+				790C907421CEE87D0036F72C /* MenuCell.swift in Sources */,
 				79E7D9DA21B03092003D280C /* TaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
