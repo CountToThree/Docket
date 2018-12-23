@@ -29,7 +29,19 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: - TableView Setup
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        switch indexPath.row {
+        case 1:
+            NotificationCenter.default.post(name: .showUpgrade, object: nil)
+        case 2:
+            NotificationCenter.default.post(name: .showProfile, object: nil)
+        case 3:
+            NotificationCenter.default.post(name: .showSettings, object: nil)
+        case 4:
+            NotificationCenter.default.post(name: .logOut, object: nil)
+        default:
+            print("lists selected")
+        }
+        NotificationCenter.default.post(name: .toggleSideMenu, object: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -32,6 +32,12 @@ class HomeViewController: UITableViewController {
         loadData()
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
+        NotificationCenter.default.addObserver(self, selector: #selector(showUpgradeVC), name: .showUpgrade, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showProfileVC), name: .showProfile, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showSettingsVC), name: .showSettings, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(logOutAction), name: .logOut, object: nil)
+
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -143,10 +149,23 @@ class HomeViewController: UITableViewController {
             print("Error fetching data from context \(error)")
         }
     }
-}
-
-//MARK: - Search Bar Methods
-extension HomeViewController: UISearchBarDelegate {
+    
+    //MARK: - Segue Methods
+    @objc func showUpgradeVC() {
+        performSegue(withIdentifier: "showUpgradeVC", sender: self)
+    }
+    
+    @objc func showProfileVC() {
+        performSegue(withIdentifier: "showProfileVC", sender: self)
+    }
+    
+    @objc func showSettingsVC() {
+        performSegue(withIdentifier: "showSettingsVC", sender: self)
+    }
+    
+    @objc func logOutAction() {
+        //performSegue(withIdentifier: "logOutAction", sender: self)
+        print("log Out")
+    }
     
 }
-

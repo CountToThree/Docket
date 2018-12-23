@@ -14,5 +14,9 @@ extension Notification.Name {
     static let saveData = Notification.Name("saveData")
     static let editTaskData = Notification.Name("editTaskData")
     static let toggleSideMenu = Notification.Name("toggleSideMenu")
+    static let showUpgrade = Notification.Name("showUpgrade")
+    static let showProfile = Notification.Name("showProfile")
+    static let showSettings = Notification.Name("showSettings")
+    static let logOut = Notification.Name("logOut")
 
 }
