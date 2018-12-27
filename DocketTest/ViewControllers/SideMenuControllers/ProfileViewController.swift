@@ -1,5 +1,5 @@
 //
-//  UpgradeViewController.swift
+//  ProfileViewController.swift
 //  DocketTest
 //
 //  Created by Max on 23.12.18.
@@ -8,9 +8,6 @@
 
 import UIKit
 
-class UpgradeViewController: UIViewController {
-    
-    
+class ProfileViewController: UIViewController {
     
 }
-

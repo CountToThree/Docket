@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import UserNotifications
+import Firebase
 
 class HomeViewController: UITableViewController {
     
@@ -29,6 +30,8 @@ class HomeViewController: UITableViewController {
         navigationController?.navigationBar.backIndicatorImage = backBtnImage
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = backBtnImage
 
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
         loadData()
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
@@ -166,6 +169,13 @@ class HomeViewController: UITableViewController {
     @objc func logOutAction() {
         //performSegue(withIdentifier: "logOutAction", sender: self)
         print("log Out")
+        do {
+            try Auth.auth().signOut()
+            self.performSegue(withIdentifier: "unwindToFirstVC", sender: self)
+
+        } catch {
+            print("Error: There was a error signing out!")
+        }
     }
     
 }

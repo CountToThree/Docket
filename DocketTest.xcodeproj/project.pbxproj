@@ -13,6 +13,11 @@
 		790C907621CFCA5D0036F72C /* UpgradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C907521CFCA5D0036F72C /* UpgradeViewController.swift */; };
 		790C907C21D0349E0036F72C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C907B21D0349E0036F72C /* ProfileViewController.swift */; };
 		790C907E21D034D80036F72C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C907D21D034D80036F72C /* SettingsViewController.swift */; };
+		790C908221D0FDD90036F72C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C908121D0FDD90036F72C /* FirstViewController.swift */; };
+		790C908421D0FEE90036F72C /* CSButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C908321D0FEE90036F72C /* CSButton.swift */; };
+		790C908621D3D4780036F72C /* CSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C908521D3D4780036F72C /* CSTextField.swift */; };
+		790C908821D3D5B40036F72C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C908721D3D5B40036F72C /* LogInViewController.swift */; };
+		790C908A21D3D5E80036F72C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C908921D3D5E80036F72C /* RegisterViewController.swift */; };
 		7917471721AEFBF000AFBA37 /* ListPopUpViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7917471521AEFBF000AFBA37 /* ListPopUpViewController.storyboard */; };
 		7919B0F421AD0F8300E7DE99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7919B0F321AD0F8300E7DE99 /* AppDelegate.swift */; };
 		7919B0F621AD0F8300E7DE99 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7919B0F521AD0F8300E7DE99 /* HomeViewController.swift */; };
@@ -60,6 +65,11 @@
 		790C907521CFCA5D0036F72C /* UpgradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeViewController.swift; sourceTree = "<group>"; };
 		790C907B21D0349E0036F72C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		790C907D21D034D80036F72C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		790C908121D0FDD90036F72C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		790C908321D0FEE90036F72C /* CSButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSButton.swift; sourceTree = "<group>"; };
+		790C908521D3D4780036F72C /* CSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTextField.swift; sourceTree = "<group>"; };
+		790C908721D3D5B40036F72C /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		790C908921D3D5E80036F72C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		7917471621AEFBF000AFBA37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = DocketTest/Storyboards/Base.lproj/ListPopUpViewController.storyboard; sourceTree = "<group>"; };
 		7919B0F021AD0F8300E7DE99 /* DocketTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DocketTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7919B0F321AD0F8300E7DE99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,17 +126,36 @@
 		790152BB21AD63C50057F97C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				790C908021D0FD7B0036F72C /* StartControllers */,
 				790C906F21CEC8330036F72C /* ContainerViewController.swift */,
 				790C907121CED2290036F72C /* SideMenuViewController.swift */,
-				7919B0F521AD0F8300E7DE99 /* HomeViewController.swift */,
-				790C907521CFCA5D0036F72C /* UpgradeViewController.swift */,
-				790C907B21D0349E0036F72C /* ProfileViewController.swift */,
-				790C907D21D034D80036F72C /* SettingsViewController.swift */,
+				790C907F21D0FD4E0036F72C /* SideMenuControllers */,
 				7949EE2D21AE67AF00F9CACB /* NewListPopUp.swift */,
 				79E7D9D921B03092003D280C /* TaskViewController.swift */,
 				797C487421B077F2001462A0 /* NewTaskViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		790C907F21D0FD4E0036F72C /* SideMenuControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7919B0F521AD0F8300E7DE99 /* HomeViewController.swift */,
+				790C907521CFCA5D0036F72C /* UpgradeViewController.swift */,
+				790C907B21D0349E0036F72C /* ProfileViewController.swift */,
+				790C907D21D034D80036F72C /* SettingsViewController.swift */,
+			);
+			path = SideMenuControllers;
+			sourceTree = "<group>";
+		};
+		790C908021D0FD7B0036F72C /* StartControllers */ = {
+			isa = PBXGroup;
+			children = (
+				790C908121D0FDD90036F72C /* FirstViewController.swift */,
+				790C908721D3D5B40036F72C /* LogInViewController.swift */,
+				790C908921D3D5E80036F72C /* RegisterViewController.swift */,
+			);
+			path = StartControllers;
 			sourceTree = "<group>";
 		};
 		7917471421AEFBB800AFBA37 /* Storyboards */ = {
@@ -247,6 +276,8 @@
 				79E7D9DD21B039D7003D280C /* CustomTextField.swift */,
 				7925B68A21C29BA200F80EE9 /* CustomCheckBox.swift */,
 				7996A63521C3E04D00D173BA /* CheckBox.swift */,
+				790C908321D0FEE90036F72C /* CSButton.swift */,
+				790C908521D3D4780036F72C /* CSTextField.swift */,
 			);
 			path = CustomClasses;
 			sourceTree = "<group>";
@@ -438,10 +469,12 @@
 				793806AA21C94B88002728EB /* IQToolbar.swift in Sources */,
 				793806AD21C94B88002728EB /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				793806B321C94B88002728EB /* IQUIViewController+Additions.swift in Sources */,
+				790C908A21D3D5E80036F72C /* RegisterViewController.swift in Sources */,
 				793806A921C94B88002728EB /* IQBarButtonItem.swift in Sources */,
 				79E7D9DC21B030FD003D280C /* TaskCell.swift in Sources */,
 				7946E0A521B5966000E08B9C /* CoreDataModel.xcdatamodeld in Sources */,
 				793806A621C94B88002728EB /* IQTextView.swift in Sources */,
+				790C908621D3D4780036F72C /* CSTextField.swift in Sources */,
 				7919B0F621AD0F8300E7DE99 /* HomeViewController.swift in Sources */,
 				79DBDC6721C70937003E3FA9 /* PublicVariables.swift in Sources */,
 				7919B0F421AD0F8300E7DE99 /* AppDelegate.swift in Sources */,
@@ -453,9 +486,12 @@
 				790C907E21D034D80036F72C /* SettingsViewController.swift in Sources */,
 				790C907021CEC8330036F72C /* ContainerViewController.swift in Sources */,
 				790C907C21D0349E0036F72C /* ProfileViewController.swift in Sources */,
+				790C908421D0FEE90036F72C /* CSButton.swift in Sources */,
 				7996A63621C3E04D00D173BA /* CheckBox.swift in Sources */,
+				790C908221D0FDD90036F72C /* FirstViewController.swift in Sources */,
 				790C907621CFCA5D0036F72C /* UpgradeViewController.swift in Sources */,
 				7949EE2E21AE67AF00F9CACB /* NewListPopUp.swift in Sources */,
+				790C908821D3D5B40036F72C /* LogInViewController.swift in Sources */,
 				793806B421C94B88002728EB /* IQUITextFieldView+Additions.swift in Sources */,
 				79EA0E0821AF0DAA003177B1 /* NotificationNameExtension.swift in Sources */,
 				793806A721C94B88002728EB /* IQPreviousNextView.swift in Sources */,
@@ -624,7 +660,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.1409revest.docketTest.DocketTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.1409revest.Reminder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -644,7 +680,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.1409revest.docketTest.DocketTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.1409revest.Reminder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
