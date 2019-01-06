@@ -25,23 +25,6 @@ class CustomTextField: UITextField {
         self.addDoneButtonOnKeyboard()
     }
     
-    //MARK: - On Textfield touch
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("Textfield touched")
-        if !self.isEditing {
-            if self.center.y > (superview?.bounds.height)! / 2 {
-                print("Textfield below Keyboard")
-//                UIView.animate(withDuration: 0.4) {
-//                    self.superview!.frame.origin.y -= self.center.y - (self.superview?.bounds.height)! / 2 + self.bounds.height
-//                }
-                UIView.animate(withDuration: 0.4, delay: 0.3, options: .curveEaseInOut, animations: {
-                    self.superview!.frame.origin.y = self.superview!.frame.origin.y - (self.center.y - (self.superview?.bounds.height)! / 2 + self.bounds.height)
-                }, completion: nil)
-            }
-        }
-    }
-
-    
     func addDoneButtonOnKeyboard() {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         doneToolbar.barStyle = .default
@@ -64,13 +47,13 @@ class CustomTextField: UITextField {
     
     @objc func doneButtonAction() {
         self.resignFirstResponder()
-        moveSuperView()
+        moveSuperViewDown()
     }
     
     @objc func cancelAction() {
         self.resignFirstResponder()
         self.text = ""
-        self.moveSuperView()
+        self.moveSuperViewDown()
     }
     
     //MARK: - Date Picker Setup
@@ -80,7 +63,7 @@ class CustomTextField: UITextField {
         formatter.dateFormat = "dd/MM/yyyy hh:mm a"
         self.text = formatter.string(from: datePicker.date)
         self.resignFirstResponder()
-        moveSuperView()
+        moveSuperViewDown()
     }
     
     func setDatePicker() {
@@ -88,7 +71,13 @@ class CustomTextField: UITextField {
         self.inputView = datePicker
     }
     
-    func moveSuperView() {
+    func moveSuperViewUp() {
+        UIView.animate(withDuration: 0.4, delay: 0.3, options: .curveEaseInOut, animations: {
+            self.superview!.frame.origin.y = self.superview!.frame.origin.y - 150//self.superview!.frame.origin.y - (self.center.y - (self.superview?.bounds.height)! / 2 + self.bounds.height)
+        }, completion: nil)
+    }
+    
+    func moveSuperViewDown() {
         if superview!.frame.origin.y != 0 {
             //superview!.frame.origin.y = 0
             UIView.animate(withDuration: 0.2) {

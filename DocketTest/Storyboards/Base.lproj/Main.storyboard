@@ -112,6 +112,10 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
+                                <connections>
+                                    <action selector="emailEditingBegin:" destination="osF-2G-fMt" eventType="editingDidBegin" id="ENa-Wf-g1X"/>
+                                    <action selector="emailEditingEnd:" destination="osF-2G-fMt" eventType="editingDidEnd" id="8KQ-gQ-zf1"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="crb-6a-G9B" customClass="CSTextField" customModule="DocketTest" customModuleProvider="target">
                                 <rect key="frame" x="21" y="391.5" width="332" height="46"/>
@@ -121,6 +125,10 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="passwordEditingBegin:" destination="osF-2G-fMt" eventType="editingDidBegin" id="0hn-Oh-xD4"/>
+                                    <action selector="passwordEditingEnd:" destination="osF-2G-fMt" eventType="editingDidEnd" id="0HB-jL-2WC"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pKd-VO-V7b">
                                 <rect key="frame" x="21" y="462.5" width="332" height="46"/>
@@ -157,21 +165,39 @@
                                     <action selector="BackBtnPressed:" destination="osF-2G-fMt" eventType="touchUpInside" id="HXF-T2-tZZ"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WhiteIcon" translatesAutoresizingMaskIntoConstraints="NO" id="95m-05-waE">
+                                <rect key="frame" x="150.5" y="86" width="74" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="jED-r4-4AF"/>
+                                    <constraint firstAttribute="height" constant="68" id="vgW-MQ-mgZ"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WhiteDocketText" translatesAutoresizingMaskIntoConstraints="NO" id="Din-Fg-Z0x">
+                                <rect key="frame" x="138" y="162" width="99" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="02E-Fj-YXw"/>
+                                    <constraint firstAttribute="width" constant="99" id="T75-P2-jw1"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.64705882349999999" green="0.87843137250000003" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="jyp-gD-RKG" firstAttribute="top" secondItem="4Ck-SK-Arh" secondAttribute="top" constant="17" id="1FV-jX-OFS"/>
                             <constraint firstItem="jyp-gD-RKG" firstAttribute="leading" secondItem="4Ck-SK-Arh" secondAttribute="leading" constant="16" id="4PQ-uZ-wv4"/>
                             <constraint firstItem="4Ck-SK-Arh" firstAttribute="trailing" secondItem="Jg2-7O-qSc" secondAttribute="trailing" constant="22" id="6Ze-B8-CGn"/>
+                            <constraint firstItem="Din-Fg-Z0x" firstAttribute="centerX" secondItem="4Ck-SK-Arh" secondAttribute="centerX" id="814-cV-Hog"/>
                             <constraint firstItem="pKd-VO-V7b" firstAttribute="top" secondItem="crb-6a-G9B" secondAttribute="bottom" constant="25" id="9R0-fu-HSQ"/>
                             <constraint firstItem="pKd-VO-V7b" firstAttribute="leading" secondItem="4Ck-SK-Arh" secondAttribute="leading" constant="21" id="Dxq-Qj-GNw"/>
                             <constraint firstItem="H7s-SK-aGz" firstAttribute="centerY" secondItem="4Ck-SK-Arh" secondAttribute="centerY" id="Eem-vs-eFf"/>
+                            <constraint firstItem="95m-05-waE" firstAttribute="centerX" secondItem="4Ck-SK-Arh" secondAttribute="centerX" id="VfJ-kf-lE4"/>
                             <constraint firstItem="4Ck-SK-Arh" firstAttribute="trailing" secondItem="pKd-VO-V7b" secondAttribute="trailing" constant="22" id="c1m-Bn-1zb"/>
                             <constraint firstItem="H7s-SK-aGz" firstAttribute="top" secondItem="Jg2-7O-qSc" secondAttribute="bottom" constant="25" id="eT3-3I-aYk"/>
                             <constraint firstItem="crb-6a-G9B" firstAttribute="leading" secondItem="4Ck-SK-Arh" secondAttribute="leading" constant="21" id="edz-hb-cPd"/>
                             <constraint firstItem="4Ck-SK-Arh" firstAttribute="trailing" secondItem="H7s-SK-aGz" secondAttribute="trailing" constant="22" id="jd9-13-DGn"/>
+                            <constraint firstItem="Jg2-7O-qSc" firstAttribute="top" secondItem="Din-Fg-Z0x" secondAttribute="bottom" constant="59.5" id="mFb-R3-9GG"/>
                             <constraint firstItem="Jg2-7O-qSc" firstAttribute="leading" secondItem="4Ck-SK-Arh" secondAttribute="leading" constant="21" id="qSV-JN-m3q"/>
                             <constraint firstItem="crb-6a-G9B" firstAttribute="top" secondItem="H7s-SK-aGz" secondAttribute="bottom" constant="25" id="sDg-Yq-DPA"/>
+                            <constraint firstItem="Din-Fg-Z0x" firstAttribute="top" secondItem="95m-05-waE" secondAttribute="bottom" constant="8" id="yAC-8o-QuB"/>
                             <constraint firstItem="4Ck-SK-Arh" firstAttribute="trailing" secondItem="crb-6a-G9B" secondAttribute="trailing" constant="22" id="yLS-MB-T1w"/>
                             <constraint firstItem="H7s-SK-aGz" firstAttribute="leading" secondItem="4Ck-SK-Arh" secondAttribute="leading" constant="21" id="zjI-A3-hy9"/>
                         </constraints>
@@ -213,6 +239,10 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="passwordEditingBegin:" destination="Dse-gD-fbg" eventType="editingDidBegin" id="cYg-Nf-Fv2"/>
+                                    <action selector="passwordEditingEnd:" destination="Dse-gD-fbg" eventType="editingDidEnd" id="ezy-CT-FKM"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQE-xx-oIh">
                                 <rect key="frame" x="21" y="401" width="332" height="46"/>
@@ -440,8 +470,8 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="G8t-iO-B8j"/>
                                             <constraint firstAttribute="height" constant="26" id="gpI-ik-Pd9"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="17"/>
+                                        <color key="textColor" red="0.54901960780000003" green="0.75686274509999996" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -782,6 +812,11 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="reminderDateEditingEnd:" destination="Rr4-QN-sST" eventType="editingDidEnd" id="JDz-Aa-dYy"/>
+                                    <action selector="reminderEditingBegin:" destination="ghG-NA-71u" eventType="editingDidBegin" id="NMG-qq-Z2R"/>
+                                    <action selector="reminderEditingEnd:" destination="ghG-NA-71u" eventType="editingDidEnd" id="1WB-yt-zI9"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvb-jr-9oD">
                                 <rect key="frame" x="187.5" y="317" width="0.0" height="0.0"/>
@@ -842,6 +877,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g2M-3a-qaH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Rr4-QN-sST" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1409" y="1322"/>
         </scene>
@@ -978,6 +1014,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Bhc-eJ-cHv"/>
-        <segue reference="2B6-ZK-mjC"/>
+        <segue reference="6SI-Eo-lcX"/>
     </inferredMetricsTieBreakers>
 </document>

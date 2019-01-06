@@ -29,10 +29,8 @@ class FirstViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if Auth.auth().currentUser != nil {
-            print("user already logged in")
             performSegue(withIdentifier: "main", sender: self)
         } else {
-            print("You have to log in")
             animateView()
         }
 

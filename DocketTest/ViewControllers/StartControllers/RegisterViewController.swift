@@ -22,6 +22,22 @@ class RegisterViewController: UIViewController {
         PasswordTF.setup()
     }
     
+    @IBAction func emailEditingBegin(_ sender: Any) {
+        EmailTF.moveSuperViewUp()
+    }
+    
+    @IBAction func emailEditingEnd(_ sender: Any) {
+        EmailTF.moveSuperViewDown()
+    }
+    
+    @IBAction func passwordEditingBegin(_ sender: Any) {
+        PasswordTF.moveSuperViewUp()
+    }
+    
+    @IBAction func passwordEditingEnd(_ sender: Any) {
+        PasswordTF.moveSuperViewDown()
+    }
+    
     @IBAction func SignUpPressed(_ sender: Any) {
         //Create new Firebase account
         Auth.auth().createUser(withEmail: EmailTF.text!, password: PasswordTF.text!) { (result, error) in

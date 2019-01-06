@@ -60,6 +60,7 @@ class NewTaskViewController: UIViewController {
     func setSlider() {
         var prValue = prioritySlider.value
         prValue = roundf(prValue)
+        prioritySlider.value = prValue
         
         switch prValue {
         case 0:
@@ -125,5 +126,13 @@ class NewTaskViewController: UIViewController {
             Database.database().reference().updateChildValues(childUpdates)
         }
         
+    }
+    
+    @IBAction func reminderEditingBegin(_ sender: Any) {
+        reminderTF.moveSuperViewUp()
+    }
+    
+    @IBAction func reminderEditingEnd(_ sender: Any) {
+        reminderTF.moveSuperViewDown()
     }
 }

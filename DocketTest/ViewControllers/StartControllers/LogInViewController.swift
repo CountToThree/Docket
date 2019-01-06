@@ -20,6 +20,14 @@ class LogInViewController: UIViewController {
         PasswordLogInTF.setup()
     }
     
+    @IBAction func passwordEditingBegin(_ sender: Any) {
+        PasswordLogInTF.moveSuperViewUp()
+    }
+    
+    @IBAction func passwordEditingEnd(_ sender: Any) {
+        PasswordLogInTF.moveSuperViewDown()
+    }
+    
     @IBAction func LogInPressed(_ sender: Any) {
         Auth.auth().signIn(withEmail: EmailLogInTF.text!, password: PasswordLogInTF.text!) { (result, error) in
             if error != nil {
