@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 class NewListPopUp: UIViewController {
     
-    
     @IBOutlet weak var nameTextField: CustomTextField!
     
+    let userRef = Database.database().reference().child("users")
+
     override func viewDidLoad() {
         nameTextField.setup()
     }
@@ -22,8 +24,17 @@ class NewListPopUp: UIViewController {
     }
     
     @IBAction func AddButtonPressed(_ sender: UIButton) {
-        NotificationCenter.default.post(name: .saveNewListName, object: self)
-        
+        //NotificationCenter.default.post(name: .saveNewListName, object: self)
+        let newItem = ListItem(name: nameTextField.text!, listID: UUID().uuidString)
+        let listDB = userRef.child((Auth.auth().currentUser?.uid)!).child(newItem.listID)
+        listDB.setValue(newItem.toAnyObject()) {
+            (error, ref) in
+            if error != nil {
+                print(error ?? "")
+            } else {
+                print("Message saved successfully")
+            }
+        }
         dismiss(animated: true, completion: nil)
     }
     

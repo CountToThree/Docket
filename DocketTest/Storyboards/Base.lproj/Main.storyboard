@@ -346,7 +346,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5B-Zr-D92">
-                                            <rect key="frame" x="47" y="15" width="111" height="17"/>
+                                            <rect key="frame" x="43" y="15" width="111" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="111" id="Fox-Ww-FpO"/>
                                                 <constraint firstAttribute="height" constant="17" id="oDn-M1-cnh"/>
@@ -356,7 +356,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoT-2a-AZm">
-                                            <rect key="frame" x="81" y="40" width="43" height="11"/>
+                                            <rect key="frame" x="77" y="40" width="43" height="11"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="43" id="AXD-ua-ArX"/>
                                                 <constraint firstAttribute="height" constant="11" id="UCx-OK-dVb"/>
@@ -462,10 +462,10 @@
                                 <color key="backgroundColor" red="0.72941176470000002" green="0.90980392160000001" blue="0.76470588240000004" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="menuCell" rowHeight="60" id="rHK-4P-t5C" customClass="MenuCell" customModule="DocketTest" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="menuCell" rowHeight="60" id="rHK-4P-t5C" customClass="MenuCell" customModule="DocketTest" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="240" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rHK-4P-t5C" id="xj2-gT-fb5">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rHK-4P-t5C" id="xj2-gT-fb5">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -605,7 +605,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xe8-ts-jCQ" customClass="CheckBox" customModule="DocketTest" customModuleProvider="target">
-                                            <rect key="frame" x="20" y="22" width="20" height="20"/>
+                                            <rect key="frame" x="16" y="22" width="20" height="20"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="64z-f0-40P" customClass="CustomCheckBox" customModule="DocketTest" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -732,6 +732,9 @@
                                 </constraints>
                                 <color key="minimumTrackTintColor" red="0.0" green="0.58296249489999996" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="maximumTrackTintColor" red="0.64705882349999999" green="0.87843137250000003" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="sliderValueChanged:" destination="ghG-NA-71u" eventType="valueChanged" id="ath-ve-QCv"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9An-q5-sMT">
                                 <rect key="frame" x="32" y="256" width="46" height="15"/>
@@ -780,11 +783,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvb-jr-9oD">
+                                <rect key="frame" x="187.5" y="317" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="13"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ifD-st-geh" firstAttribute="top" secondItem="9An-q5-sMT" secondAttribute="bottom" constant="8" id="20K-d7-Miu"/>
+                            <constraint firstItem="xvb-jr-9oD" firstAttribute="centerX" secondItem="ecv-xh-fOs" secondAttribute="centerX" id="7Ye-PC-P72"/>
                             <constraint firstItem="ecv-xh-fOs" firstAttribute="bottom" secondItem="T33-hc-A6C" secondAttribute="bottom" constant="20" id="9QS-WP-xHM"/>
+                            <constraint firstItem="xvb-jr-9oD" firstAttribute="top" secondItem="ifD-st-geh" secondAttribute="bottom" constant="8" id="AmB-7d-kjv"/>
                             <constraint firstItem="icY-xP-wkn" firstAttribute="leading" secondItem="ecv-xh-fOs" secondAttribute="leading" constant="32" id="BSs-n8-bF8"/>
                             <constraint firstItem="pbW-HQ-DgM" firstAttribute="leading" secondItem="ecv-xh-fOs" secondAttribute="leading" constant="32" id="Bha-Ry-Mfn"/>
                             <constraint firstItem="ifD-st-geh" firstAttribute="top" secondItem="ecv-xh-fOs" secondAttribute="top" constant="215" id="Cs5-Qx-3QN"/>
@@ -825,6 +836,7 @@
                     <connections>
                         <outlet property="prioritySlider" destination="ifD-st-geh" id="8lU-OI-JaB"/>
                         <outlet property="reminderTF" destination="icY-xP-wkn" id="Khj-2t-NJG"/>
+                        <outlet property="sliderLabel" destination="xvb-jr-9oD" id="WrV-MT-ibE"/>
                         <outlet property="taskInfoTF" destination="pbW-HQ-DgM" id="qL0-GF-DB4"/>
                         <outlet property="taskNameTF" destination="I0e-lI-eEF" id="yb8-N5-RMT"/>
                     </connections>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class FirstViewController: UIViewController {
     
@@ -23,24 +24,25 @@ class FirstViewController: UIViewController {
         LogInBtn.setup()
         SignUpBtn.setup()
         greenBGView.bounds.size.width = self.view.bounds.width
-        print(greenBGView.bounds.width," " , self.view.bounds.width, " FIRST")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        animateView()
+        if Auth.auth().currentUser != nil {
+            print("user already logged in")
+            performSegue(withIdentifier: "main", sender: self)
+        } else {
+            print("You have to log in")
+            animateView()
+        }
 
     }
     
     func animateView() {
         viewBottomConstraint.constant = -145
-        print("ASDF")
-        //iconCenterYConstraint.constant = -50 //(greenBGView.bounds.height / 2)
-        print(greenBGView.bounds.height / 2)
         UIView.animate(withDuration: 0.4) {
             self.view.layoutIfNeeded()
         }
-        print(greenBGView.bounds.width, " SECOND")
     }
     
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {}

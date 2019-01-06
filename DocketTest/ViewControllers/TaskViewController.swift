@@ -9,43 +9,24 @@
 import UIKit
 import CoreData
 import UserNotifications
+import Firebase
 
 class TaskViewController: UITableViewController {
 
-    var tasks = [Task]()
+    var tasks = [TaskItem]()
     var rowToEdit: Int!
     
-    var selectedList: List? {
-        didSet {
-            loadData()
-        }
-    }
-    
-    var observer: NSObjectProtocol?
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var selectedList: ListItem?
+        
+    let userID = Auth.auth().currentUser?.uid
+    let ref = Database.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.backBarButtonItem?.title = nil
-        
+        loadTasksFromDatabase()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        getNewData()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
 
-        if self.isMovingFromParent {
-            if let observer = observer {
-                NotificationCenter.default.removeObserver(observer)
-            }
-        }
-        saveData()
-    }
-    
     //MARK: - TableView Datasource Methods
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskPrototype") as! TaskCell
@@ -70,15 +51,16 @@ class TaskViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .normal, title: "Delete") { (action, index) in
-            self.context.delete(self.tasks[indexPath.row])
-            self.tasks.remove(at: indexPath.row)
+            //self.context.delete(self.tasks[indexPath.row])
+            print(self.tasks[indexPath.row].taskID)
             if let id = self.tasks[indexPath.row].notificationID {
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
             }
-            self.saveData()
+            self.ref.child("tasks/\(self.userID ?? "")/\(self.selectedList?.listID ?? "")/\(self.tasks[indexPath.row].taskID)").removeValue()
+            self.tasks.remove(at: indexPath.row)
+            self.tableView.reloadData()
         }
         let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (action, index) in
-            print("Edit Task at \(index.row)")
             self.rowToEdit = index.row
             self.performSegue(withIdentifier: "editTaskSegue", sender: self)
         }
@@ -88,8 +70,11 @@ class TaskViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected \(indexPath.row)")
         tasks[indexPath.row].done = !tasks[indexPath.row].done
+        
+        let childUpdates = ["tasks/\(userID ?? "")/\(selectedList?.listID ?? "")/\(tasks[indexPath.row].taskID)/completed": tasks[indexPath.row].done]
+        ref.updateChildValues(childUpdates)
+        
         let cell = tableView.cellForRow(at: indexPath) as! TaskCell
         if tasks[indexPath.row].done {
             cell.checkBoxImage.taskComplete()
@@ -101,15 +86,20 @@ class TaskViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! NewTaskViewController
         if segue.identifier == "editTaskSegue" {
-            destinationVC.taskTitle = tasks[rowToEdit].title!
+            destinationVC.parentID = (selectedList?.listID)!
+            destinationVC.taskTitle = tasks[rowToEdit].title
             destinationVC.taskInfo = tasks[rowToEdit].desc!
             destinationVC.priorityValue = tasks[rowToEdit].priority
+            destinationVC.itemID = tasks[rowToEdit].taskID
             if let date = tasks[rowToEdit].notificationDate {
-                destinationVC.reminderDate = dateToString(for: date)
+                destinationVC.reminderDate = date
                 let id = tasks[rowToEdit].notificationID
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id!])
             }
-            destinationVC.taskToDelete = rowToEdit
+            destinationVC.editTask = true
+        } else if segue.identifier == "showNewTask" {
+            destinationVC.parentID = (selectedList?.listID)!
+            destinationVC.editTask = false
         }
     }
     
@@ -120,68 +110,42 @@ class TaskViewController: UITableViewController {
     }
     
     //MARK: - Data Manipulation Methods
-    func saveData() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving data \(error)")
+    func loadTasksFromDatabase() {
+        let parentID = selectedList!.listID
+        let taskDB = ref.child("tasks/\(userID ?? "")/\(parentID)")
+        taskDB.observe(.childAdded) { (snapshot) in
+            self.getSnapshotData(from: snapshot)
         }
         
+        
+        taskDB.observe(.childChanged) { (snapshot) in
+            self.getSnapshotData(from: snapshot)
+        }
+    }
+    
+    func getSnapshotData(from snap: DataSnapshot) {
+        let snapshotValue = snap.value as? [String: AnyObject] ?? [:]
+        guard let taskTitle = snapshotValue["title"] as? String else { return }
+        guard let taskDesc = snapshotValue["description"] as? String else { return }
+        guard let taskDone = snapshotValue["completed"] as? Bool else { return }
+        guard let taskPriority = snapshotValue["priority"] as? Float else { return }
+        guard let taskNotID = snapshotValue["notificationID"] as? String else { return }
+        guard let taskNotDate = snapshotValue["notificationDate"] as? String else { return }
+        let id = snap.key
+        
+        let task = TaskItem(title: taskTitle, desc: taskDesc, done: taskDone, priority: taskPriority, notificationID: taskNotID, notificationDate: taskNotDate, taskID: id)
+        
+        var counter = 0
+        for item in tasks {
+            if item.taskID == id {
+                tasks.remove(at: counter)
+            }
+            counter += 1
+        }
+        
+        tasks.append(task)
+        sortList()
         tableView.reloadData()
-    }
-    
-    func loadData(with request: NSFetchRequest<Task> = Task.fetchRequest(), predicate: NSPredicate? = nil) {
-        
-        let listPredicate = NSPredicate(format: "parentList.name MATCHES %@", (selectedList?.name)!)
-        
-        if let additionalPredicate = predicate {
-            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [listPredicate, additionalPredicate])
-        } else {
-            request.predicate = listPredicate
-        }
-        
-        do {
-            tasks = try context.fetch(request)
-        } catch {
-            print("Error loading data \(error)")
-        }
-    }
-    
-    //MARK: - Add new Tasks
-    func getNewData() {
-        observer = NotificationCenter.default.addObserver(forName: .saveNewTaskItems, object: nil, queue: OperationQueue.main, using: { (notification) in
-            let newTaskData = notification.object as! NewTaskViewController
-            let newItem = Task(context: self.context)
-            newItem.title = newTaskData.taskNameTF.text!
-            newItem.done = false
-            if let info = newTaskData.taskInfoTF.text {
-                newItem.desc = info
-            } else {
-                if let reminder = newTaskData.reminderTF.text {
-                    newItem.desc = reminder
-                }
-            }
-            newItem.priority = newTaskData.prioritySlider.value
-            newItem.parentList = self.selectedList
-            if let id = newTaskData.notID {
-                newItem.notificationID = id
-                newItem.notificationDate = newTaskData.reminderTF.datePicker.date
-            }
-            
-            // delete Old Task
-            if let item = newTaskData.taskToDelete {
-                self.context.delete(self.tasks[item])
-                self.tasks.remove(at: item)
-
-            }
-
-            print(newItem.priority)
-            self.tasks.append(newItem)
-            self.sortList()
-            self.saveData()
-            self.tableView.reloadData()
-            NotificationCenter.default.removeObserver(self.observer as Any)
-        })
     }
     
     func sortList() {

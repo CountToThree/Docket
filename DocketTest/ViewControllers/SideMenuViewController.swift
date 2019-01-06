@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SideMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -19,11 +20,23 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameLabel.text = "Max"
+        
+        setFirstName()
         profileImage.image = UIImage(named: "ProfileIcon")
         profileImage.layer.cornerRadius = profileImage.bounds.width / 2
         menuTableView.contentInset = UIEdgeInsets(top: 15,left: 0,bottom: 0,right: 0)
-
+        
+    }
+    
+    func setFirstName() {
+        let nameRef = Database.database().reference().child("users/\(Auth.auth().currentUser?.uid ?? "")/name")
+        nameRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            let snapshotValue = snapshot.value as? NSDictionary
+            let name = snapshotValue?["firstName"] as? String
+            self.nameLabel.text = name
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
     
     //MARK: - TableView Setup

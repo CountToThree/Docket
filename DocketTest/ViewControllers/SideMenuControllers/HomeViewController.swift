@@ -13,14 +13,14 @@ import Firebase
 
 class HomeViewController: UITableViewController {
     
-    var lists = [List]()
+    var lists = [ListItem]()
     var indexOnSelect: Int!
     var observer: NSObjectProtocol?
     var nextTitle = ""
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    
+    let ref = Database.database().reference()
+    let userID = Auth.auth().currentUser?.uid
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,8 +32,7 @@ class HomeViewController: UITableViewController {
 
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        loadData()
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        loadFromDatabase()
         
         NotificationCenter.default.addObserver(self, selector: #selector(showUpgradeVC), name: .showUpgrade, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showProfileVC), name: .showProfile, object: nil)
@@ -41,29 +40,6 @@ class HomeViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(logOutAction), name: .logOut, object: nil)
 
         
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        //get new Data
-        observer = NotificationCenter.default.addObserver(forName: .saveNewListName, object: nil, queue: OperationQueue.main) { (notification) in
-            let newListName = notification.object as! NewListPopUp
-            let newItem = List(context: self.context)
-            newItem.name = newListName.nameTextField.text!
-            self.lists.append(newItem)
-            self.tableView.reloadData()
-        }
-        
-        saveData()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        if let observer = observer {
-            NotificationCenter.default.removeObserver(observer)
-        }
-        saveData()
     }
 
     //MARK: - TableView Setup Methods
@@ -75,14 +51,16 @@ class HomeViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listPrototype") as! ListCell
         cell.ListTitleLabel.text = lists[indexPath.row].name
-        let listTasks = lists[indexPath.row].tasks?.allObjects as! [Task]
-        var counter = 0
-        for item in listTasks {   // get number of tasks that are already done
-            if item.done {
-                counter += 1;
-            }
-        }
-        cell.ListStatusLabel.text = "\(counter) / \(lists[indexPath.row].tasks!.count)"
+//        let listTasks = lists[indexPath.row].tasks
+//        var counter = 0
+//        for item in listTasks {
+//            if item.done {
+//                counter += 1
+//            }
+//        }
+//        cell.ListStatusLabel.text = "\(counter) / \(lists[indexPath.row].tasks.count)"
+        cell.ListStatusLabel.text = "0 / 0"
+
         return cell
     }
     
@@ -92,17 +70,12 @@ class HomeViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let action = UITableViewRowAction(style: .normal, title: "Delete") { (action, index) in
-            self.context.delete(self.lists[indexPath.row])
             
-            let listTasks = self.lists[indexPath.row].tasks?.allObjects as! [Task]
-            for item in listTasks {
-                if let id = item.notificationID {
-                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
-                }
-            }
-            
+            self.ref.child("users/\(self.userID ?? "")/\(self.lists[indexPath.row].listID)").removeValue()
+            self.ref.child("tasks/\(self.userID ?? "")/\(self.lists[indexPath.row].listID)").removeValue()
+
             self.lists.remove(at: indexPath.row)
-            self.saveData()
+            self.tableView.reloadData()
         }
         action.backgroundColor = lightRed
         return [action]
@@ -133,23 +106,16 @@ class HomeViewController: UITableViewController {
     }
 
     //MARK: - Model Manipulation Methods
-    
-    func saveData() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving data: \(error)")
-        }
-        
-        self.tableView.reloadData()
-    }
-    
-    func loadData() {
-        let request: NSFetchRequest<List> = List.fetchRequest()
-        do {
-            lists = try context.fetch(request)
-        } catch {
-            print("Error fetching data from context \(error)")
+    func loadFromDatabase() {
+        let listDB = ref.child("users/\((Auth.auth().currentUser?.uid)!)")
+        listDB.observe(.childAdded) { (snapshot) in
+            let snapshotValue = snapshot.value as? [String: AnyObject] ?? [:]
+
+            guard let listTitle = snapshotValue["name"] as? String else { return }
+            guard let listID = snapshotValue["id"] as? String else { return }
+            self.lists.append(ListItem(name: listTitle, listID: listID))
+
+            self.tableView.reloadData()
         }
     }
     
@@ -167,12 +133,9 @@ class HomeViewController: UITableViewController {
     }
     
     @objc func logOutAction() {
-        //performSegue(withIdentifier: "logOutAction", sender: self)
-        print("log Out")
         do {
             try Auth.auth().signOut()
             self.performSegue(withIdentifier: "unwindToFirstVC", sender: self)
-
         } catch {
             print("Error: There was a error signing out!")
         }

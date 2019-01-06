@@ -29,9 +29,12 @@ class RegisterViewController: UIViewController {
                 print(error ?? "")
             } else {
                 print("Registration successful")
+                let nameRef = Database.database().reference().child("users/\(Auth.auth().currentUser?.uid ?? "")/name")
+                nameRef.setValue(["firstName": self.FirstNameTF.text])
                 self.performSegue(withIdentifier: "toHomeVC", sender: self)
             }
         }
+        
         
     }
     @IBAction func BackBtnPressed(_ sender: Any) {
