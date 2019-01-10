@@ -8,12 +8,14 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class RegisterViewController: UIViewController {
     
     @IBOutlet weak var FirstNameTF: CSTextField!
     @IBOutlet weak var EmailTF: CSTextField!
     @IBOutlet weak var PasswordTF: CSTextField!
+    @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,23 +40,31 @@ class RegisterViewController: UIViewController {
         PasswordTF.moveSuperViewDown()
     }
     
-    @IBAction func SignUpPressed(_ sender: Any) {
+    @IBAction func SignUpPressed(_ sender: Any) {        
         //Create new Firebase account
-        Auth.auth().createUser(withEmail: EmailTF.text!, password: PasswordTF.text!) { (result, error) in
-            if error != nil {
-                print(error ?? "")
-            } else {
-                print("Registration successful")
-                let nameRef = Database.database().reference().child("users/\(Auth.auth().currentUser?.uid ?? "")/name")
-                nameRef.setValue(["firstName": self.FirstNameTF.text])
-                self.performSegue(withIdentifier: "toHomeVC", sender: self)
+        if FirstNameTF.text != "" {
+            SVProgressHUD.show()
+            Auth.auth().createUser(withEmail: EmailTF.text!, password: PasswordTF.text!) { (result, error) in
+                if error != nil {
+                    print(error ?? "")
+                    self.errorLabel.text = error?.localizedDescription
+                    SVProgressHUD.dismiss()
+                } else {
+                    print("Registration successful")
+                    SVProgressHUD.dismiss()
+                    let nameRef = Database.database().reference().child("users/\(Auth.auth().currentUser?.uid ?? "")/name")
+                    nameRef.setValue(["firstName": self.FirstNameTF.text])
+                    self.performSegue(withIdentifier: "toHomeVC", sender: self)
+                }
             }
+        } else {
+            errorLabel.text = "Please enter your first name."
+            SVProgressHUD.dismiss()
         }
         
         
     }
     @IBAction func BackBtnPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-
     }
 }

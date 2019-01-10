@@ -47,13 +47,11 @@ class CustomTextField: UITextField {
     
     @objc func doneButtonAction() {
         self.resignFirstResponder()
-        moveSuperViewDown()
     }
     
     @objc func cancelAction() {
         self.resignFirstResponder()
         self.text = ""
-        self.moveSuperViewDown()
     }
     
     //MARK: - Date Picker Setup
@@ -63,7 +61,6 @@ class CustomTextField: UITextField {
         formatter.dateFormat = "dd/MM/yyyy hh:mm a"
         self.text = formatter.string(from: datePicker.date)
         self.resignFirstResponder()
-        moveSuperViewDown()
     }
     
     func setDatePicker() {

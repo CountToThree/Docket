@@ -51,8 +51,6 @@ class TaskViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .normal, title: "Delete") { (action, index) in
-            //self.context.delete(self.tasks[indexPath.row])
-            print(self.tasks[indexPath.row].taskID)
             if let id = self.tasks[indexPath.row].notificationID {
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
             }

@@ -8,11 +8,13 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class LogInViewController: UIViewController {
     
     @IBOutlet weak var EmailLogInTF: CSTextField!
     @IBOutlet weak var PasswordLogInTF: CSTextField!
+    @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +31,22 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func LogInPressed(_ sender: Any) {
+        SVProgressHUD.show()
+        
         Auth.auth().signIn(withEmail: EmailLogInTF.text!, password: PasswordLogInTF.text!) { (result, error) in
             if error != nil {
                 print(error ?? "")
+                self.errorLabel.text = error?.localizedDescription
+                SVProgressHUD.dismiss()
             } else {
                 self.performSegue(withIdentifier: "toHomeVC", sender: self)
+                SVProgressHUD.dismiss()
             }
         }
+    }
+    
+    @IBAction func resetPassowrdPressed(_ sender: Any) {
+        performSegue(withIdentifier: "showForgotPassword", sender: self)
     }
     
     @IBAction func BackBtnPressed(_ sender: Any) {

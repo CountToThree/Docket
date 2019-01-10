@@ -19,6 +19,14 @@ class NewListPopUp: UIViewController {
         nameTextField.setup()
     }
     
+    @IBAction func nameEditingBegin(_ sender: Any) {
+        nameTextField.moveSuperViewUp()
+    }
+    
+    @IBAction func nameEditingEnd(_ sender: Any) {
+        nameTextField.moveSuperViewDown()
+    }
+    
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
