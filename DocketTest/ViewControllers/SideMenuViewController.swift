@@ -15,20 +15,19 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var menuTableView: UITableView!
     
-    let menuItems = ["LISTS","UPGRADE", "PROFILE", "SETTINGS", "LOG OUT"]
-    let menuIcons = [UIImage(named: "ListIcon"), UIImage(named: "UpgradeMenuIcon"), UIImage(named: "ProfileMenuIcon"), UIImage(named: "SettingsMenuIcon"), UIImage(named: "LogOutMenuIcon")]
+    let menuItems = ["LISTS","UPGRADE", "PROFILE", "CONTACT", "LOG OUT"]
+    let menuIcons = [UIImage(named: "ListIcon"), UIImage(named: "UpgradeMenuIcon"), UIImage(named: "ProfileMenuIcon"), UIImage(named: "mailIcon"), UIImage(named: "LogOutMenuIcon")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setFirstName()
         profileImage.image = UIImage(named: "ProfileIcon")
         profileImage.layer.cornerRadius = profileImage.bounds.width / 2
         menuTableView.contentInset = UIEdgeInsets(top: 15,left: 0,bottom: 0,right: 0)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(setFirstName), name: .updateFirstName, object: nil)
     }
     
-    func setFirstName() {
+    @objc func setFirstName() {
         let nameRef = Database.database().reference().child("users/\(Auth.auth().currentUser?.uid ?? "")/name")
         nameRef.observeSingleEvent(of: .value, with: { (snapshot) in
             let snapshotValue = snapshot.value as? NSDictionary

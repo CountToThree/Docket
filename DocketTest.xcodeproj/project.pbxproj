@@ -12,7 +12,7 @@
 		790C907421CEE87D0036F72C /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C907321CEE87D0036F72C /* MenuCell.swift */; };
 		790C907621CFCA5D0036F72C /* UpgradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C907521CFCA5D0036F72C /* UpgradeViewController.swift */; };
 		790C907C21D0349E0036F72C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C907B21D0349E0036F72C /* ProfileViewController.swift */; };
-		790C907E21D034D80036F72C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C907D21D034D80036F72C /* SettingsViewController.swift */; };
+		790C907E21D034D80036F72C /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C907D21D034D80036F72C /* ContactViewController.swift */; };
 		790C908221D0FDD90036F72C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C908121D0FDD90036F72C /* FirstViewController.swift */; };
 		790C908421D0FEE90036F72C /* CSButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C908321D0FEE90036F72C /* CSButton.swift */; };
 		790C908621D3D4780036F72C /* CSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790C908521D3D4780036F72C /* CSTextField.swift */; };
@@ -24,6 +24,7 @@
 		7919B0F921AD0F8300E7DE99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7919B0F721AD0F8300E7DE99 /* Main.storyboard */; };
 		7919B0FB21AD0F8700E7DE99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7919B0FA21AD0F8700E7DE99 /* Assets.xcassets */; };
 		7919B0FE21AD0F8700E7DE99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7919B0FC21AD0F8700E7DE99 /* LaunchScreen.storyboard */; };
+		7923BAC621E7A58E00F8E572 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7923BAC521E7A58E00F8E572 /* PasswordViewController.swift */; };
 		7925B68B21C29BA200F80EE9 /* CustomCheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7925B68A21C29BA200F80EE9 /* CustomCheckBox.swift */; };
 		7949EE2C21ADA55700F9CACB /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949EE2B21ADA55700F9CACB /* ListCell.swift */; };
 		7949EE2E21AE67AF00F9CACB /* NewListPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949EE2D21AE67AF00F9CACB /* NewListPopUp.swift */; };
@@ -49,7 +50,7 @@
 		790C907321CEE87D0036F72C /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		790C907521CFCA5D0036F72C /* UpgradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeViewController.swift; sourceTree = "<group>"; };
 		790C907B21D0349E0036F72C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		790C907D21D034D80036F72C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		790C907D21D034D80036F72C /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		790C908121D0FDD90036F72C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		790C908321D0FEE90036F72C /* CSButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSButton.swift; sourceTree = "<group>"; };
 		790C908521D3D4780036F72C /* CSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTextField.swift; sourceTree = "<group>"; };
@@ -63,6 +64,7 @@
 		7919B0FA21AD0F8700E7DE99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7919B0FD21AD0F8700E7DE99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7919B0FF21AD0F8700E7DE99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7923BAC521E7A58E00F8E572 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		7925B68A21C29BA200F80EE9 /* CustomCheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCheckBox.swift; sourceTree = "<group>"; };
 		7949EE2B21ADA55700F9CACB /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		7949EE2D21AE67AF00F9CACB /* NewListPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListPopUp.swift; sourceTree = "<group>"; };
@@ -112,7 +114,8 @@
 				7919B0F521AD0F8300E7DE99 /* HomeViewController.swift */,
 				790C907521CFCA5D0036F72C /* UpgradeViewController.swift */,
 				790C907B21D0349E0036F72C /* ProfileViewController.swift */,
-				790C907D21D034D80036F72C /* SettingsViewController.swift */,
+				7923BAC521E7A58E00F8E572 /* PasswordViewController.swift */,
+				790C907D21D034D80036F72C /* ContactViewController.swift */,
 			);
 			path = SideMenuControllers;
 			sourceTree = "<group>";
@@ -376,9 +379,10 @@
 				797C487521B077F2001462A0 /* NewTaskViewController.swift in Sources */,
 				79E7D9DE21B039D7003D280C /* CustomTextField.swift in Sources */,
 				7925B68B21C29BA200F80EE9 /* CustomCheckBox.swift in Sources */,
-				790C907E21D034D80036F72C /* SettingsViewController.swift in Sources */,
+				790C907E21D034D80036F72C /* ContactViewController.swift in Sources */,
 				790C907021CEC8330036F72C /* ContainerViewController.swift in Sources */,
 				790C907C21D0349E0036F72C /* ProfileViewController.swift in Sources */,
+				7923BAC621E7A58E00F8E572 /* PasswordViewController.swift in Sources */,
 				790C908421D0FEE90036F72C /* CSButton.swift in Sources */,
 				7996A63621C3E04D00D173BA /* CheckBox.swift in Sources */,
 				790C908221D0FDD90036F72C /* FirstViewController.swift in Sources */,

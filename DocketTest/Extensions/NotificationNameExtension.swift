@@ -18,5 +18,6 @@ extension Notification.Name {
     static let showProfile = Notification.Name("showProfile")
     static let showSettings = Notification.Name("showSettings")
     static let logOut = Notification.Name("logOut")
+    static let updateFirstName = Notification.Name("updateFirstName")
 
 }
