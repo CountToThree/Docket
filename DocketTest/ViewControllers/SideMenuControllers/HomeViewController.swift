@@ -59,6 +59,8 @@ class HomeViewController: UITableViewController {
 //            }
 //        }
 //        cell.ListStatusLabel.text = "\(counter) / \(lists[indexPath.row].tasks.count)"
+        cell.ListColorView.backgroundColor = UIColor.setColor(at: lists[indexPath.row].color)
+        cell.ListColorView.layer.cornerRadius = cell.ListColorView.bounds.width / 2
         cell.ListStatusLabel.text = "0 / 0"
 
         return cell
@@ -100,8 +102,6 @@ class HomeViewController: UITableViewController {
     //MARK: - Button Setup Methods
     
     @IBAction func showMenu(_ sender: UIBarButtonItem) {
-        // show Menu
-        print("show Menu")
         NotificationCenter.default.post(name: .toggleSideMenu, object: nil)
     }
 
@@ -113,7 +113,8 @@ class HomeViewController: UITableViewController {
 
             guard let listTitle = snapshotValue["name"] as? String else { return }
             guard let listID = snapshotValue["id"] as? String else { return }
-            self.lists.append(ListItem(name: listTitle, listID: listID))
+            guard let color = snapshotValue["color"] as? String else { return }
+            self.lists.append(ListItem(name: listTitle, color: color, listID: listID))
 
             self.tableView.reloadData()
         }

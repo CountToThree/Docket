@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension Notification.Name {
     static let saveNewListName = Notification.Name("saveNewListName")
@@ -21,3 +22,30 @@ extension Notification.Name {
     static let updateFirstName = Notification.Name("updateFirstName")
 
 }
+
+extension UIColor {
+    static let lightGreen = UIColor(red: 165/255, green: 209/255, blue: 176/255, alpha: 1.0)
+    static let lightRed = UIColor(red: 249/255, green: 122/255, blue: 122/255, alpha: 1.0)
+    static let darkGreen = UIColor(red: 140/255, green: 193/255, blue: 149/255, alpha: 1.0)
+    
+    static func setColor(at row: String) -> UIColor {
+        switch row {
+        case "None":
+            return UIColor.white
+        case "Blue":
+            return UIColor.blue
+        case "Red":
+            return UIColor.red
+        case "Yellow":
+            return UIColor.yellow
+        case "Green":
+            return UIColor.green
+        case "Black":
+            return UIColor.black
+        default:
+            return UIColor.lightGreen
+        }
+    }
+}
+
+

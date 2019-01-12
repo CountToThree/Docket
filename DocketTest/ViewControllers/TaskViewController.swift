@@ -127,8 +127,21 @@ class TaskViewController: UITableViewController {
         guard let taskDesc = snapshotValue["description"] as? String else { return }
         guard let taskDone = snapshotValue["completed"] as? Bool else { return }
         guard let taskPriority = snapshotValue["priority"] as? Float else { return }
-        guard let taskNotID = snapshotValue["notificationID"] as? String else { return }
-        guard let taskNotDate = snapshotValue["notificationDate"] as? String else { return }
+        let taskNotID: String?
+        let taskNotDate: String?
+        
+        if let _ = snapshotValue["notificationID"] as? String {
+            taskNotID = snapshotValue["notificationID"] as? String
+        } else {
+            taskNotID = nil
+        }
+        
+        if let _ = snapshotValue["notificationDate"] as? String {
+            taskNotDate = snapshotValue["notificationDate"] as? String
+        } else {
+            taskNotDate = nil
+        }
+        
         let id = snap.key
         
         let task = TaskItem(title: taskTitle, desc: taskDesc, done: taskDone, priority: taskPriority, notificationID: taskNotID, notificationDate: taskNotDate, taskID: id)

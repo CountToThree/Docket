@@ -514,7 +514,7 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="listPrototype" rowHeight="65" id="5a1-4z-3cW" customClass="ListCell" customModule="DocketTest" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5a1-4z-3cW" id="BsB-QU-cSV">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5a1-4z-3cW" id="BsB-QU-cSV">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -538,13 +538,14 @@
                                             <color key="textColor" red="0.81568627450980391" green="0.81568627450980391" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="adA-XL-WCg">
-                                            <rect key="frame" x="16" y="22.5" width="20" height="20"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qJz-bt-jTv">
+                                            <rect key="frame" x="16" y="22" width="20" height="20"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="20" id="hkl-1E-doL"/>
-                                                <constraint firstAttribute="width" constant="20" id="oAC-Hk-I9k"/>
+                                                <constraint firstAttribute="height" constant="20" id="HNU-tw-Q1J"/>
+                                                <constraint firstAttribute="width" constant="20" id="cmn-sf-zVK"/>
                                             </constraints>
-                                        </imageView>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="EoT-2a-AZm" secondAttribute="trailing" constant="166" id="138-Mu-euI"/>
@@ -552,13 +553,14 @@
                                         <constraint firstItem="g5B-Zr-D92" firstAttribute="top" secondItem="BsB-QU-cSV" secondAttribute="top" constant="14" id="RDT-Sa-y2u"/>
                                         <constraint firstItem="g5B-Zr-D92" firstAttribute="top" secondItem="BsB-QU-cSV" secondAttribute="topMargin" constant="3" id="bNt-GO-GHb"/>
                                         <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="g5B-Zr-D92" secondAttribute="trailing" constant="150" id="deO-B9-KY3"/>
-                                        <constraint firstItem="adA-XL-WCg" firstAttribute="leading" secondItem="BsB-QU-cSV" secondAttribute="leadingMargin" id="l8X-7f-Zp4"/>
-                                        <constraint firstItem="adA-XL-WCg" firstAttribute="centerY" secondItem="BsB-QU-cSV" secondAttribute="centerY" id="mEh-r8-TpE"/>
+                                        <constraint firstItem="qJz-bt-jTv" firstAttribute="centerY" secondItem="BsB-QU-cSV" secondAttribute="centerY" id="exb-dV-0Tv"/>
                                         <constraint firstItem="g5B-Zr-D92" firstAttribute="leading" secondItem="BsB-QU-cSV" secondAttribute="leadingMargin" constant="59" id="rcX-1l-CKP"/>
+                                        <constraint firstItem="qJz-bt-jTv" firstAttribute="leading" secondItem="BsB-QU-cSV" secondAttribute="leadingMargin" id="wBS-m0-Iak"/>
                                         <constraint firstItem="EoT-2a-AZm" firstAttribute="leading" secondItem="BsB-QU-cSV" secondAttribute="leadingMargin" constant="93" id="wad-FZ-zdT"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="ListColorView" destination="qJz-bt-jTv" id="R34-UM-h1Z"/>
                                     <outlet property="ListStatusLabel" destination="EoT-2a-AZm" id="fX6-Fh-n8U"/>
                                     <outlet property="ListTitleLabel" destination="g5B-Zr-D92" id="jCQ-0a-Joc"/>
                                 </connections>
@@ -1356,6 +1358,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Bhc-eJ-cHv"/>
-        <segue reference="2B6-ZK-mjC"/>
+        <segue reference="N2f-wL-Foi"/>
     </inferredMetricsTieBreakers>
 </document>

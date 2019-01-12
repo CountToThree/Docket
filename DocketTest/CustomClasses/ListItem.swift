@@ -10,9 +10,10 @@ import UIKit
 
 struct ListItem {
     var name: String
+    var color: String
     var listID: String
     
     func toAnyObject() -> Any {
-        return ["name": name, "id": listID]
+        return ["name": name, "color": color, "id": listID]
     }
 }
