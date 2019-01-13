@@ -16,7 +16,7 @@ class ContactViewController: UIViewController, MFMailComposeViewControllerDelega
     @IBAction func contactPressed(_ sender: Any) {
         
         guard MFMailComposeViewController.canSendMail() else {
-            errorLabel.textColor = lightRed
+            errorLabel.textColor = UIColor.lightRed
             errorLabel.text = "You can not send E-Mails from this device."
             return }
         errorLabel.text = ""
@@ -40,13 +40,13 @@ class ContactViewController: UIViewController, MFMailComposeViewControllerDelega
         case .cancelled:
             print("cancelled")
         case .failed:
-            errorLabel.textColor = lightRed
+            errorLabel.textColor = UIColor.lightRed
             errorLabel.text = "Failed to send E-Mail."
         case .saved:
-            errorLabel.textColor = lightGreen
+            errorLabel.textColor = UIColor.lightGreen
             errorLabel.text = "E-Mail saved successfully."
         case .sent:
-            errorLabel.textColor = lightGreen
+            errorLabel.textColor = UIColor.lightGreen
             errorLabel.text = "E-Mail sent successfully."
 
         }

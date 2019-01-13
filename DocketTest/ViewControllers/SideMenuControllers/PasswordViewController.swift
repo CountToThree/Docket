@@ -30,7 +30,7 @@ class PasswordViewController: UIViewController {
         Auth.auth().signIn(withEmail: email!, password: oldPwTF.text!) { (result, error) in
             if error != nil {
                 print(error ?? "")
-                self.errorLabel.textColor = lightRed
+                self.errorLabel.textColor = UIColor.lightRed
                 self.errorLabel.text = error?.localizedDescription
                 SVProgressHUD.dismiss()
             } else {
@@ -41,7 +41,7 @@ class PasswordViewController: UIViewController {
     }
     
     func setNewPassword() {
-        errorLabel.textColor = lightRed
+        errorLabel.textColor = UIColor.lightRed
         guard let _ = newPwTF.text else {
             errorLabel.text = "You have to enter a new password."
             return
@@ -50,7 +50,7 @@ class PasswordViewController: UIViewController {
             if error != nil {
                 self.errorLabel.text = error!.localizedDescription
             } else {
-                self.errorLabel.textColor = lightGreen
+                self.errorLabel.textColor = UIColor.lightGreen
                 self.errorLabel.text = "Password updated successfully."
             }
         })

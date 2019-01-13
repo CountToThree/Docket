@@ -32,7 +32,6 @@
 		7996A63621C3E04D00D173BA /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7996A63521C3E04D00D173BA /* CheckBox.swift */; };
 		79B7AE7221D4D6AF0016E489 /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B7AE7121D4D6AF0016E489 /* ListItem.swift */; };
 		79B7AE7421D4D7110016E489 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B7AE7321D4D7110016E489 /* TaskItem.swift */; };
-		79DBDC6721C70937003E3FA9 /* PublicVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DBDC6621C70937003E3FA9 /* PublicVariables.swift */; };
 		79DBDC6921C7B05F003E3FA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79DBDC6821C7B05F003E3FA9 /* GoogleService-Info.plist */; };
 		79E7D9DA21B03092003D280C /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E7D9D921B03092003D280C /* TaskViewController.swift */; };
 		79E7D9DC21B030FD003D280C /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E7D9DB21B030FD003D280C /* TaskCell.swift */; };
@@ -72,7 +71,6 @@
 		7996A63521C3E04D00D173BA /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		79B7AE7121D4D6AF0016E489 /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
 		79B7AE7321D4D7110016E489 /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
-		79DBDC6621C70937003E3FA9 /* PublicVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicVariables.swift; sourceTree = "<group>"; };
 		79DBDC6821C7B05F003E3FA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		79E7D9D921B03092003D280C /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		79E7D9DB21B030FD003D280C /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 				790152BB21AD63C50057F97C /* ViewControllers */,
 				7949EE2A21ADA53100F9CACB /* CustomClasses */,
 				79EA0E0621AF0D85003177B1 /* Extensions */,
-				7963AFB121C41926009452DE /* HelpUnits */,
 				7917471421AEFBB800AFBA37 /* Storyboards */,
 				7919B0FA21AD0F8700E7DE99 /* Assets.xcassets */,
 				7919B0FC21AD0F8700E7DE99 /* LaunchScreen.storyboard */,
@@ -188,14 +185,6 @@
 				790C908521D3D4780036F72C /* CSTextField.swift */,
 			);
 			path = CustomClasses;
-			sourceTree = "<group>";
-		};
-		7963AFB121C41926009452DE /* HelpUnits */ = {
-			isa = PBXGroup;
-			children = (
-				79DBDC6621C70937003E3FA9 /* PublicVariables.swift */,
-			);
-			path = HelpUnits;
 			sourceTree = "<group>";
 		};
 		796BA1D021C5A9A100432100 /* TableViewCells */ = {
@@ -316,6 +305,7 @@
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -327,6 +317,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -373,7 +364,6 @@
 				79E7D9DC21B030FD003D280C /* TaskCell.swift in Sources */,
 				790C908621D3D4780036F72C /* CSTextField.swift in Sources */,
 				7919B0F621AD0F8300E7DE99 /* HomeViewController.swift in Sources */,
-				79DBDC6721C70937003E3FA9 /* PublicVariables.swift in Sources */,
 				7919B0F421AD0F8300E7DE99 /* AppDelegate.swift in Sources */,
 				79FAD95321E7281A007489BF /* ForgotPasswordViewController.swift in Sources */,
 				797C487521B077F2001462A0 /* NewTaskViewController.swift in Sources */,

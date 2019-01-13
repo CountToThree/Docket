@@ -33,13 +33,13 @@ extension UIColor {
         case "None":
             return UIColor.white
         case "Blue":
-            return UIColor.blue
+            return UIColor(red: 89/255, green: 166/255, blue: 255/255, alpha: 1.0)
         case "Red":
-            return UIColor.red
+            return UIColor(red: 255/255, green: 76/255, blue: 76/255, alpha: 1.0)
         case "Yellow":
-            return UIColor.yellow
+            return UIColor(red: 247/255, green: 255/255, blue: 107/255, alpha: 1.0)
         case "Green":
-            return UIColor.green
+            return UIColor.lightGreen
         case "Black":
             return UIColor.black
         default:

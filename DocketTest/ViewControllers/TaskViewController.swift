@@ -62,8 +62,8 @@ class TaskViewController: UITableViewController {
             self.rowToEdit = index.row
             self.performSegue(withIdentifier: "editTaskSegue", sender: self)
         }
-        editAction.backgroundColor = lightGreen
-        deleteAction.backgroundColor = lightRed
+        editAction.backgroundColor = UIColor.lightGreen
+        deleteAction.backgroundColor = UIColor.lightRed
         return [deleteAction, editAction]
     }
     

@@ -28,27 +28,10 @@ class NewListPopUp: UIViewController {
     
     func pickerViewSetup() {
         colorView.layer.cornerRadius = colorView.bounds.width / 2
-        colorView.backgroundColor = lightGreen
+        colorView.backgroundColor = UIColor.lightGreen
         
         pickerView.delegate = self
         colorTextField.inputView = pickerView
-    }
-    
-    //MARK: - Textfield Editings
-    @IBAction func nameEditingBegin(_ sender: Any) {
-        nameTextField.moveSuperViewUp()
-    }
-    
-    @IBAction func nameEditingEnd(_ sender: Any) {
-        nameTextField.moveSuperViewDown()
-    }
-    
-    @IBAction func colorEditingBegin(_ sender: Any) {
-        colorTextField.moveSuperViewUp()
-    }
-    
-    @IBAction func colorEditingEnd(_ sender: Any) {
-        colorTextField.moveSuperViewDown()
     }
     
     //MARK: - Button Setup

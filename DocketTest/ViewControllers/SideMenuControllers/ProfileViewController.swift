@@ -34,7 +34,7 @@ class ProfileViewController: UIViewController {
             self.name = (snapshotValue?["firstName"] as? String)!
             self.editNameTF.text = self.name
         }) { (error) in
-            self.errorLabel.textColor = lightRed
+            self.errorLabel.textColor = UIColor.lightRed
             self.errorLabel.text = error.localizedDescription
         }
         
@@ -48,10 +48,10 @@ class ProfileViewController: UIViewController {
         if editEmailTF.text != Auth.auth().currentUser?.email && editEmailTF.text != "" {
             Auth.auth().currentUser?.updateEmail(to: editEmailTF.text!, completion: { (error) in
                 if error != nil {
-                    self.errorLabel.textColor = lightRed
+                    self.errorLabel.textColor = UIColor.lightRed
                     self.errorLabel.text = error?.localizedDescription
                 } else {
-                    self.errorLabel.textColor = lightGreen
+                    self.errorLabel.textColor = UIColor.lightGreen
                     self.errorLabel.text = "Saved successfully."
                 }
             })
@@ -59,7 +59,7 @@ class ProfileViewController: UIViewController {
         if editNameTF.text != name && editNameTF.text != "" {
             let nameRef = ref.child("users/\(Auth.auth().currentUser?.uid ?? "")/name/firstName")
             nameRef.setValue(editNameTF.text)
-            errorLabel.textColor = lightGreen
+            errorLabel.textColor = UIColor.lightGreen
             errorLabel.text = "Saved successfully"
             NotificationCenter.default.post(name: .updateFirstName, object: nil)
         }

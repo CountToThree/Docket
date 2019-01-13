@@ -9,6 +9,7 @@
 import UIKit
 import UserNotifications
 import Firebase
+import IQKeyboardManagerSwift
 
 class NewTaskViewController: UIViewController {
     
@@ -24,18 +25,21 @@ class NewTaskViewController: UIViewController {
     var reminderDate = ""
     var itemID = ""
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
     var notID: String?
     var editTask: Bool!
     var parentID = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        IQKeyboardManager.shared.enable = false
         taskNameTF.setup()
         taskInfoTF.setup()
         reminderTF.setup(datePicker: true)
         setValues()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        IQKeyboardManager.shared.enable = true
     }
     
     func setValues() {

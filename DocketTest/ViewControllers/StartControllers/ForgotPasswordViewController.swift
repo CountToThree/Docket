@@ -26,7 +26,7 @@ class ForgotPasswordViewController: UIViewController {
         
             Auth.auth().sendPasswordReset(withEmail: emailTF.text!) { (error) in
                 if error != nil {
-                    self.errorLabel.textColor = lightRed
+                    self.errorLabel.textColor = UIColor.lightRed
                     self.errorLabel.text = error?.localizedDescription
                     SVProgressHUD.dismiss()
                 } else {

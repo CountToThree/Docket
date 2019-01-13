@@ -15,7 +15,7 @@ class CustomTextField: UITextField {
     
     func setup(datePicker: Bool? = nil) {
         self.layer.borderWidth = 1
-        self.layer.borderColor = lightGreen.cgColor
+        self.layer.borderColor = UIColor.lightGreen.cgColor
         self.layer.cornerRadius = 1
         self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: self.frame.height))
         self.leftViewMode = .always
@@ -36,8 +36,8 @@ class CustomTextField: UITextField {
             done.action = #selector(self.datePickerDoneAction)
             setDatePicker()
         }
-        done.tintColor = lightGreen
-        cancel.tintColor = lightGreen
+        done.tintColor = UIColor.lightGreen
+        cancel.tintColor = UIColor.lightGreen
         let items = [cancel, flexSpace, done]
         doneToolbar.items = items
         doneToolbar.sizeToFit()
@@ -56,7 +56,6 @@ class CustomTextField: UITextField {
     
     //MARK: - Date Picker Setup
     @objc func datePickerDoneAction() {
-        print("date picker done action")
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy hh:mm a"
         self.text = formatter.string(from: datePicker.date)
@@ -70,13 +69,13 @@ class CustomTextField: UITextField {
     
     func moveSuperViewUp() {
         UIView.animate(withDuration: 0.4, delay: 0.3, options: .curveEaseInOut, animations: {
-            self.superview!.frame.origin.y = self.superview!.frame.origin.y - 150//self.superview!.frame.origin.y - (self.center.y - (self.superview?.bounds.height)! / 2 + self.bounds.height)
+            self.superview!.frame.origin.y = self.superview!.frame.origin.y / 2
+//            self.superview?.center.y = self.superview!.center.y / 2
         }, completion: nil)
     }
     
     func moveSuperViewDown() {
         if superview!.frame.origin.y != 0 {
-            //superview!.frame.origin.y = 0
             UIView.animate(withDuration: 0.2) {
                 self.superview!.frame.origin.y = 0
             }

@@ -25,7 +25,7 @@ class HomeViewController: UITableViewController {
         super.viewDidLoad()
 
         let backBtnImage = UIImage(named: "backButtonIcon")
-        navigationController?.navigationBar.barTintColor = lightGreen
+        navigationController?.navigationBar.barTintColor = UIColor.lightGreen
         
         navigationController?.navigationBar.backIndicatorImage = backBtnImage
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = backBtnImage
@@ -38,8 +38,6 @@ class HomeViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(showProfileVC), name: .showProfile, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showSettingsVC), name: .showSettings, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(logOutAction), name: .logOut, object: nil)
-
-        
     }
 
     //MARK: - TableView Setup Methods
@@ -79,7 +77,7 @@ class HomeViewController: UITableViewController {
             self.lists.remove(at: indexPath.row)
             self.tableView.reloadData()
         }
-        action.backgroundColor = lightRed
+        action.backgroundColor = UIColor.lightRed
         return [action]
     }
     
