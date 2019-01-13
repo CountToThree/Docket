@@ -539,7 +539,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qJz-bt-jTv">
-                                            <rect key="frame" x="16" y="22" width="20" height="20"/>
+                                            <rect key="frame" x="16" y="22.5" width="20" height="20"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="HNU-tw-Q1J"/>
@@ -588,7 +588,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="WcZ-SS-mrz" kind="show" identifier="showTasksInList" id="uRt-tn-3UN"/>
-                        <segue destination="znM-V2-iQA" kind="show" identifier="showSettingsVC" id="BQP-Mi-fVw"/>
+                        <segue destination="znM-V2-iQA" kind="show" identifier="showContactVC" id="BQP-Mi-fVw"/>
                         <segue destination="Ace-JL-xxy" kind="show" identifier="showUpgradeVC" id="fJX-VG-dAN"/>
                         <segue destination="M7F-D3-Xcc" kind="show" identifier="showProfileVC" id="4Zr-4W-Gqp"/>
                         <segue destination="s5Q-Ew-Pu6" kind="unwind" identifier="unwindToFirstVC" unwindAction="prepareForUnwindWithSegue:" id="5UF-h5-8v3"/>
@@ -644,10 +644,10 @@
                                 <color key="backgroundColor" red="0.72941176470000002" green="0.90980392160000001" blue="0.76470588240000004" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="menuCell" rowHeight="60" id="rHK-4P-t5C" customClass="MenuCell" customModule="DocketTest" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="menuCell" rowHeight="60" id="rHK-4P-t5C" customClass="MenuCell" customModule="DocketTest" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="240" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rHK-4P-t5C" id="xj2-gT-fb5">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rHK-4P-t5C" id="xj2-gT-fb5">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>

@@ -34,9 +34,10 @@ class HomeViewController: UITableViewController {
         
         loadFromDatabase()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadInfos), name: .updateListInfo, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showUpgradeVC), name: .showUpgrade, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showProfileVC), name: .showProfile, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(showSettingsVC), name: .showSettings, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showContactVC), name: .showContact, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(logOutAction), name: .logOut, object: nil)
     }
 
@@ -49,18 +50,10 @@ class HomeViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listPrototype") as! ListCell
         cell.ListTitleLabel.text = lists[indexPath.row].name
-//        let listTasks = lists[indexPath.row].tasks
-//        var counter = 0
-//        for item in listTasks {
-//            if item.done {
-//                counter += 1
-//            }
-//        }
-//        cell.ListStatusLabel.text = "\(counter) / \(lists[indexPath.row].tasks.count)"
+        print(lists[indexPath.row].infoText)
+        cell.ListStatusLabel.text = lists[indexPath.row].infoText
         cell.ListColorView.backgroundColor = UIColor.setColor(at: lists[indexPath.row].color)
         cell.ListColorView.layer.cornerRadius = cell.ListColorView.bounds.width / 2
-        cell.ListStatusLabel.text = "0 / 0"
-
         return cell
     }
     
@@ -112,13 +105,19 @@ class HomeViewController: UITableViewController {
             guard let listTitle = snapshotValue["name"] as? String else { return }
             guard let listID = snapshotValue["id"] as? String else { return }
             guard let color = snapshotValue["color"] as? String else { return }
-            self.lists.append(ListItem(name: listTitle, color: color, listID: listID))
+            guard let info = snapshotValue["info"] as? String else { return }
+            self.lists.append(ListItem(name: listTitle, color: color, infoText: info, listID: listID))
 
             self.tableView.reloadData()
         }
     }
     
-    //MARK: - Segue Methods
+    //MARK: - Notification Selector Methods
+    @objc func reloadInfos() {
+        lists = []
+        loadFromDatabase()
+    }
+    
     @objc func showUpgradeVC() {
         performSegue(withIdentifier: "showUpgradeVC", sender: self)
     }
@@ -127,8 +126,8 @@ class HomeViewController: UITableViewController {
         performSegue(withIdentifier: "showProfileVC", sender: self)
     }
     
-    @objc func showSettingsVC() {
-        performSegue(withIdentifier: "showSettingsVC", sender: self)
+    @objc func showContactVC() {
+        performSegue(withIdentifier: "showContactVC", sender: self)
     }
     
     @objc func logOutAction() {
@@ -139,5 +138,4 @@ class HomeViewController: UITableViewController {
             print("Error: There was a error signing out!")
         }
     }
-    
 }

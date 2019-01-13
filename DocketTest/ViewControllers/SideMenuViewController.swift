@@ -47,7 +47,7 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
         case 2:
             NotificationCenter.default.post(name: .showProfile, object: nil)
         case 3:
-            NotificationCenter.default.post(name: .showSettings, object: nil)
+            NotificationCenter.default.post(name: .showContact, object: nil)
         case 4:
             NotificationCenter.default.post(name: .logOut, object: nil)
         default:

@@ -41,7 +41,7 @@ class NewListPopUp: UIViewController {
     
     @IBAction func AddButtonPressed(_ sender: UIButton) {
         //NotificationCenter.default.post(name: .saveNewListName, object: self)
-        let newItem = ListItem(name: nameTextField.text!, color: selectedColor, listID: UUID().uuidString)
+        let newItem = ListItem(name: nameTextField.text!, color: selectedColor, infoText: "0 / 0", listID: UUID().uuidString)
         let listDB = userRef.child((Auth.auth().currentUser?.uid)!).child(newItem.listID)
         listDB.setValue(newItem.toAnyObject()) {
             (error, ref) in

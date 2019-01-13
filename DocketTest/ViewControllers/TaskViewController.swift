@@ -26,6 +26,16 @@ class TaskViewController: UITableViewController {
         self.navigationItem.backBarButtonItem?.title = nil
         loadTasksFromDatabase()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        let done = tasks.filter({ return $0.done == true})
+        let infoText = "\(done.count) / \(tasks.count)"
+        let infoRef = ref.child("users/\(userID ?? "")/\(selectedList?.listID ?? "")")
+        infoRef.updateChildValues(["info": infoText])
+        NotificationCenter.default.post(name: .updateListInfo, object: nil)
+        
+    }
 
     //MARK: - TableView Datasource Methods
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
