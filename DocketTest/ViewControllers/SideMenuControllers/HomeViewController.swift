@@ -37,6 +37,7 @@ class HomeViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadInfos), name: .updateListInfo, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showUpgradeVC), name: .showUpgrade, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showProfileVC), name: .showProfile, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showCalendarVC), name: .showCalendar, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showContactVC), name: .showContact, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(logOutAction), name: .logOut, object: nil)
     }
@@ -50,7 +51,6 @@ class HomeViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listPrototype") as! ListCell
         cell.ListTitleLabel.text = lists[indexPath.row].name
-        print(lists[indexPath.row].infoText)
         cell.ListStatusLabel.text = lists[indexPath.row].infoText
         cell.ListColorView.backgroundColor = UIColor.setColor(at: lists[indexPath.row].color)
         cell.ListColorView.layer.cornerRadius = cell.ListColorView.bounds.width / 2
@@ -124,6 +124,10 @@ class HomeViewController: UITableViewController {
     
     @objc func showProfileVC() {
         performSegue(withIdentifier: "showProfileVC", sender: self)
+    }
+    
+    @objc func showCalendarVC() {
+        performSegue(withIdentifier: "showCalendarVC", sender: self)
     }
     
     @objc func showContactVC() {

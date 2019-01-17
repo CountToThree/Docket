@@ -15,8 +15,8 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var menuTableView: UITableView!
     
-    let menuItems = ["LISTS","UPGRADE", "PROFILE", "CONTACT", "LOG OUT"]
-    let menuIcons = [UIImage(named: "ListIcon"), UIImage(named: "UpgradeMenuIcon"), UIImage(named: "ProfileMenuIcon"), UIImage(named: "mailIcon"), UIImage(named: "LogOutMenuIcon")]
+    let menuItems = ["LISTS","UPGRADE", "PROFILE", "CALENDAR", "CONTACT", "LOG OUT"]
+    let menuIcons = [UIImage(named: "ListIcon"), UIImage(named: "UpgradeMenuIcon"), UIImage(named: "ProfileMenuIcon"), UIImage(named: "CalendarIcon"), UIImage(named: "mailIcon"), UIImage(named: "LogOutMenuIcon")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +47,10 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
         case 2:
             NotificationCenter.default.post(name: .showProfile, object: nil)
         case 3:
-            NotificationCenter.default.post(name: .showContact, object: nil)
+            NotificationCenter.default.post(name: .showCalendar, object: nil)
         case 4:
+            NotificationCenter.default.post(name: .showContact, object: nil)
+        case 5:
             NotificationCenter.default.post(name: .logOut, object: nil)
         default:
             print("lists selected")

@@ -17,6 +17,7 @@ extension Notification.Name {
     static let toggleSideMenu = Notification.Name("toggleSideMenu")
     static let showUpgrade = Notification.Name("showUpgrade")
     static let showProfile = Notification.Name("showProfile")
+    static let showCalendar = Notification.Name("showCalendar")
     static let showContact = Notification.Name("showContact")
     static let logOut = Notification.Name("logOut")
     static let updateFirstName = Notification.Name("updateFirstName")
