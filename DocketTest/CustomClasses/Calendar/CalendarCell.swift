@@ -20,7 +20,5 @@ class CalendarCell: UICollectionViewCell {
         leftColorView.layer.cornerRadius = leftColorView.frame.width / 2
         midColorView.layer.cornerRadius = midColorView.frame.width / 2
         rightColorView.layer.cornerRadius = rightColorView.frame.width / 2
-
-        midColorView.backgroundColor = .black
     }
 }

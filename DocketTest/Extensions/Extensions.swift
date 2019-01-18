@@ -30,6 +30,7 @@ extension UIColor {
     static let lightRed = UIColor(red: 249/255, green: 122/255, blue: 122/255, alpha: 1.0)
     static let darkGreen = UIColor(red: 140/255, green: 193/255, blue: 149/255, alpha: 1.0)
     
+    
     static func setColor(at row: String) -> UIColor {
         switch row {
         case "None":
