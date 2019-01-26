@@ -28,6 +28,8 @@
 		7925B68B21C29BA200F80EE9 /* CustomCheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7925B68A21C29BA200F80EE9 /* CustomCheckBox.swift */; };
 		7949EE2C21ADA55700F9CACB /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949EE2B21ADA55700F9CACB /* ListCell.swift */; };
 		7949EE2E21AE67AF00F9CACB /* NewListPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949EE2D21AE67AF00F9CACB /* NewListPopUp.swift */; };
+		794F108121F5D2CE00686239 /* CalendarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794F108021F5D2CE00686239 /* CalendarItem.swift */; };
+		797A656C21F3716F0008B860 /* CalendarTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797A656B21F3716F0008B860 /* CalendarTableCell.swift */; };
 		797C487521B077F2001462A0 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797C487421B077F2001462A0 /* NewTaskViewController.swift */; };
 		799664C221EE06FA006BA8BE /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799664C121EE06FA006BA8BE /* CalendarViewController.swift */; };
 		7996A63621C3E04D00D173BA /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7996A63521C3E04D00D173BA /* CheckBox.swift */; };
@@ -69,6 +71,8 @@
 		7925B68A21C29BA200F80EE9 /* CustomCheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCheckBox.swift; sourceTree = "<group>"; };
 		7949EE2B21ADA55700F9CACB /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		7949EE2D21AE67AF00F9CACB /* NewListPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListPopUp.swift; sourceTree = "<group>"; };
+		794F108021F5D2CE00686239 /* CalendarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarItem.swift; sourceTree = "<group>"; };
+		797A656B21F3716F0008B860 /* CalendarTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableCell.swift; sourceTree = "<group>"; };
 		797C487421B077F2001462A0 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		799664C121EE06FA006BA8BE /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		7996A63521C3E04D00D173BA /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 				796BA1D021C5A9A100432100 /* TableViewCells */,
 				79B7AE7121D4D6AF0016E489 /* ListItem.swift */,
 				79B7AE7321D4D7110016E489 /* TaskItem.swift */,
+				794F108021F5D2CE00686239 /* CalendarItem.swift */,
 				79E7D9DD21B039D7003D280C /* CustomTextField.swift */,
 				7925B68A21C29BA200F80EE9 /* CustomCheckBox.swift */,
 				7996A63521C3E04D00D173BA /* CheckBox.swift */,
@@ -207,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				79D93F7221F0637000D04CCE /* CalendarCell.swift */,
+				797A656B21F3716F0008B860 /* CalendarTableCell.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -374,6 +380,7 @@
 				7949EE2C21ADA55700F9CACB /* ListCell.swift in Sources */,
 				79B7AE7221D4D6AF0016E489 /* ListItem.swift in Sources */,
 				790C908A21D3D5E80036F72C /* RegisterViewController.swift in Sources */,
+				794F108121F5D2CE00686239 /* CalendarItem.swift in Sources */,
 				79B7AE7421D4D7110016E489 /* TaskItem.swift in Sources */,
 				79E7D9DC21B030FD003D280C /* TaskCell.swift in Sources */,
 				790C908621D3D4780036F72C /* CSTextField.swift in Sources */,
@@ -387,6 +394,7 @@
 				790C907021CEC8330036F72C /* ContainerViewController.swift in Sources */,
 				79D93F7321F0637000D04CCE /* CalendarCell.swift in Sources */,
 				790C907C21D0349E0036F72C /* ProfileViewController.swift in Sources */,
+				797A656C21F3716F0008B860 /* CalendarTableCell.swift in Sources */,
 				7923BAC621E7A58E00F8E572 /* PasswordViewController.swift in Sources */,
 				790C908421D0FEE90036F72C /* CSButton.swift in Sources */,
 				7996A63621C3E04D00D173BA /* CheckBox.swift in Sources */,

@@ -48,6 +48,7 @@ class TaskViewController: UITableViewController {
         }
         cell.taskTitleLabel.text = tasks[indexPath.row].title
         cell.taskInfoLabel.text = tasks[indexPath.row].desc
+        
         return cell
     }
     
@@ -101,8 +102,9 @@ class TaskViewController: UITableViewController {
             destinationVC.itemID = tasks[rowToEdit].taskID
             if let date = tasks[rowToEdit].notificationDate {
                 destinationVC.reminderDate = date
-                let id = tasks[rowToEdit].notificationID
-                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id!])
+                if let id = tasks[rowToEdit].notificationID {
+                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
+                }
             }
             destinationVC.editTask = true
         } else if segue.identifier == "showNewTask" {
@@ -122,51 +124,36 @@ class TaskViewController: UITableViewController {
         let parentID = selectedList!.listID
         let taskDB = ref.child("tasks/\(userID ?? "")/\(parentID)")
         taskDB.observe(.childAdded) { (snapshot) in
-            self.getSnapshotData(from: snapshot)
+            if let task = FirebaseApp.getTaskData(from: snapshot) {
+                var counter = 0
+                for item in self.tasks {
+                    if item.taskID == task.taskID {
+                        self.tasks.remove(at: counter)
+                    }
+                    counter += 1
+                }
+                
+                self.tasks.append(task)
+                self.sortList()
+                self.tableView.reloadData()
+            }
         }
-        
         
         taskDB.observe(.childChanged) { (snapshot) in
-            self.getSnapshotData(from: snapshot)
-        }
-    }
-    
-    func getSnapshotData(from snap: DataSnapshot) {
-        let snapshotValue = snap.value as? [String: AnyObject] ?? [:]
-        guard let taskTitle = snapshotValue["title"] as? String else { return }
-        guard let taskDesc = snapshotValue["description"] as? String else { return }
-        guard let taskDone = snapshotValue["completed"] as? Bool else { return }
-        guard let taskPriority = snapshotValue["priority"] as? Float else { return }
-        let taskNotID: String?
-        let taskNotDate: String?
-        
-        if let _ = snapshotValue["notificationID"] as? String {
-            taskNotID = snapshotValue["notificationID"] as? String
-        } else {
-            taskNotID = nil
-        }
-        
-        if let _ = snapshotValue["notificationDate"] as? String {
-            taskNotDate = snapshotValue["notificationDate"] as? String
-        } else {
-            taskNotDate = nil
-        }
-        
-        let id = snap.key
-        
-        let task = TaskItem(title: taskTitle, desc: taskDesc, done: taskDone, priority: taskPriority, notificationID: taskNotID, notificationDate: taskNotDate, taskID: id)
-        
-        var counter = 0
-        for item in tasks {
-            if item.taskID == id {
-                tasks.remove(at: counter)
+            if let task = FirebaseApp.getTaskData(from: snapshot) {
+                var counter = 0
+                for item in self.tasks {
+                    if item.taskID == task.taskID {
+                        self.tasks.remove(at: counter)
+                    }
+                    counter += 1
+                }
+                
+                self.tasks.append(task)
+                self.sortList()
+                self.tableView.reloadData()
             }
-            counter += 1
         }
-        
-        tasks.append(task)
-        sortList()
-        tableView.reloadData()
     }
     
     func sortList() {

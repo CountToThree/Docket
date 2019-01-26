@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import Firebase
 
 class CalendarViewController: UIViewController {
     
     @IBOutlet weak var formerMonthBtn: UIButton!
     @IBOutlet weak var nextMonthBtn: UIButton!
     @IBOutlet weak var monthLabel: UILabel!
-    @IBOutlet weak var weekDaysSV: UIStackView!
     @IBOutlet weak var dayesCollectionView: UICollectionView!
     @IBOutlet weak var collectionHeightConstr: NSLayoutConstraint!
+    @IBOutlet weak var tasksTableView: UITableView!
+    
+    let ref = Database.database().reference()
     
     let months = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     var thisMonth = Calendar.current.component(Calendar.Component.month, from: Date()) - 1
@@ -29,9 +32,16 @@ class CalendarViewController: UIViewController {
     var myDate = Date()
     var cellHeight: CGFloat!
     var days = [Int]()
+    var monthChanged = false
+    
+    var calendarItems = [CalendarItem]()
+    var thisMonthItems = [CalendarItem]()
+    var selectedItems = [CalendarItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dayesCollectionView.delegate = self
+        dayesCollectionView.dataSource = self
         setNewDate(date: "\(thisMonth + 1)-01-\(thisYear)")
         nextMonthBtn.transform = nextMonthBtn.transform.rotated(by: CGFloat.pi)
         monthLabel.text = "\(months[thisMonth]) \(thisYear)"
@@ -41,6 +51,7 @@ class CalendarViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setConstrHeight()
+        loadDataFromDatabase()
     }
     
     func checkDate() {
@@ -61,11 +72,8 @@ class CalendarViewController: UIViewController {
             thisYear -= 1
             thisMonth = 11
         }
-        setNewDate(date: "\(thisMonth + 1)-01-\(thisYear)")
         checkDate()
-        monthLabel.text = "\(months[thisMonth]) \(thisYear)"
-        setConstrHeight()
-        dayesCollectionView.reloadData()
+        monthChangedActions()
     }
     
     @IBAction func nextMonthPressed(_ sender: Any) {
@@ -76,12 +84,31 @@ class CalendarViewController: UIViewController {
         } else {
             thisMonth += 1
         }
-        monthLabel.text = "\(months[thisMonth]) \(thisYear)"
-        setNewDate(date: "\(thisMonth + 1)-01-\(thisYear)")
-        setConstrHeight()
-        dayesCollectionView.reloadData()
+        monthChangedActions()
     }
     
+    func monthChangedActions() {
+        monthChanged = true
+        counter = 0
+        selectedItems = []
+        monthLabel.text = "\(months[thisMonth]) \(thisYear)"
+        setNewDate(date: "\(thisMonth + 1)-01-\(thisYear)")
+        dayesCollectionView.reloadData()
+        tasksTableView.reloadData()
+        setConstrHeight()
+    }
+    
+    func getMonthTasks() {
+        for item in calendarItems {
+            let comp = Calendar.current.dateComponents([.month, .year], from: item.time)
+            if comp.month == thisMonth+1 && comp.year == thisYear {
+                thisMonthItems.append(item)
+                setTaskColor(date: item.time, color: item.color)
+            }
+        }
+    }
+    
+    //Set the Date for the new Month
     func setNewDate(date: String) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy"
@@ -117,6 +144,80 @@ class CalendarViewController: UIViewController {
         collectionHeightConstr.constant = collHeight
     }
     
+    func setTaskColor(date: Date, color: UIColor) {
+        let comp = Calendar.current.dateComponents([.day, .month, .year], from: date)
+        var index = -1
+        for d in days {
+            index += 1
+            if d != 0 {
+                if d == comp.day! {
+                    break
+                }
+            }
+        }
+        if thisMonth+1 == comp.month! && thisYear == comp.year! {
+            let indexPath = IndexPath(row: index, section: 0)
+            let cell = dayesCollectionView.cellForItem(at: indexPath) as! CalendarCell
+            if cell.leftColorView.backgroundColor == .white {
+                cell.leftColorView.backgroundColor = color
+            } else if cell.midColorView.backgroundColor == .white {
+                if cell.leftColorView.backgroundColor != color {
+                    cell.midColorView.backgroundColor = color
+                }
+            } else if cell.rightColorView.backgroundColor == .white {
+                if cell.leftColorView.backgroundColor != color && cell.midColorView.backgroundColor != color {
+                    cell.rightColorView.backgroundColor = color
+                }
+            }
+        }
+    }
+    
+    //MARK: - Fetch Data from server
+    func loadDataFromDatabase() {
+        
+        let listDB = ref.child("users/\((Auth.auth().currentUser?.uid)!)")
+        listDB.observe(.childAdded) { (snapshot) in
+            if let list = FirebaseApp.getListData(from: snapshot) {
+                self.loadTasks(for: list.listID, color: .setColor(at: list.color))
+            }
+        }
+    }
+    
+    func loadTasks(for key: String, color: UIColor) {
+        
+        let taskDB = ref.child("tasks/\((Auth.auth().currentUser?.uid)!)/\(key)")
+        taskDB.observe(.childAdded) { (snapshot) in
+            if let task = FirebaseApp.getTaskData(from: snapshot) {
+                if task.calendarDate != nil {
+                    var desc: String? = nil
+                    if let d = task.desc {
+                        desc = d
+                    }
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "dd/MM/yyyy hh:mm a"
+                    let calDate = dateFormatter.date(from: task.calendarDate!)
+                    let newCalItem = CalendarItem(title: task.title, desc: desc, color: color, time: calDate!)
+                    
+                    self.setTaskColor(date: calDate!, color: newCalItem.color)
+                    self.calendarItems.append(newCalItem)
+                    self.sortList()
+                }
+            }
+        }
+    }
+    
+    func reloadCollectionView() {
+        DispatchQueue.main.async {
+            let numberOfItems = self.dayesCollectionView.numberOfItems(inSection: 0)
+            let indexPaths = [Int](0..<numberOfItems).map{ IndexPath(row: $0, section: 0) }
+            self.dayesCollectionView.reloadItems(at: indexPaths)
+        }
+    }
+    
+    func sortList() {
+        calendarItems = calendarItems.sorted(by: { $1.time.compare($0.time) == .orderedDescending})
+    }
+    var counter = 0
 }
 
 extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -133,12 +234,26 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
                 cell.isUserInteractionEnabled = false
             } else {
                 cell.dayLabel.textColor = UIColor.black
+                cell.isUserInteractionEnabled = true
             }
         } else {
             cell.dayLabel.text = ""
+            cell.isUserInteractionEnabled = false
         }
         cellHeight = cell.frame.height
-        cell.layer.cornerRadius = cell.frame.height / 2
+        cell.leftColorView.backgroundColor = .white
+        cell.midColorView.backgroundColor = .white
+        cell.rightColorView.backgroundColor = .white
+        
+        
+        if !monthChanged {
+            
+        }
+        counter += 1
+        if counter == days.count && monthChanged {
+            getMonthTasks()
+            monthChanged = false
+        }
         return cell
     }
     
@@ -166,10 +281,42 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CalendarCell
         cell.dayLabel.textColor = UIColor.lightGreen
+        selectedItems = []
+        for item in calendarItems {
+            let date = item.time
+            let comp = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+            if cell.dayLabel.text != "" {
+                if "\(thisMonth+1)-\(cell.dayLabel.text!)-\(thisYear)" == "\(comp.month!)-\(comp.day!)-\(comp.year!)" {
+                    selectedItems.append(item)
+                }
+            }
+        }
+        tasksTableView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CalendarCell
         cell.dayLabel.textColor = UIColor.black
+    }
+}
+
+extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return selectedItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "calendarTaskCell") as! CalendarTableCell
+        cell.nameLabel.text = selectedItems[indexPath.row].title
+        let date = selectedItems[indexPath.row].time
+        let comp = Calendar.current.dateComponents([.hour, .minute], from: date)
+        var timeText = "\(comp.minute!)"
+        if comp.minute! < 10 {
+            timeText = "0\(comp.minute!)"
+        }
+        cell.timeLabel.text = "\(comp.hour!):\(timeText)"
+        cell.colorView.backgroundColor = selectedItems[indexPath.row].color
+        
+        return cell
     }
 }

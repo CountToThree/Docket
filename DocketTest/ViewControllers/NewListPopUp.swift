@@ -18,6 +18,7 @@ class NewListPopUp: UIViewController {
     var pickerView = UIPickerView()
     var pickerData = ["None", "Blue", "Red", "Yellow", "Green", "Black"]
     let userRef = Database.database().reference().child("users")
+    let user = Auth.auth().currentUser!.uid
     var selectedColor = ""
     
     override func viewDidLoad() {
@@ -42,7 +43,7 @@ class NewListPopUp: UIViewController {
     @IBAction func AddButtonPressed(_ sender: UIButton) {
         //NotificationCenter.default.post(name: .saveNewListName, object: self)
         let newItem = ListItem(name: nameTextField.text!, color: selectedColor, infoText: "0 / 0", listID: UUID().uuidString)
-        let listDB = userRef.child((Auth.auth().currentUser?.uid)!).child(newItem.listID)
+        let listDB = userRef.child(user).child(newItem.listID)
         listDB.setValue(newItem.toAnyObject()) {
             (error, ref) in
             if error != nil {

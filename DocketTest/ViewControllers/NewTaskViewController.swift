@@ -18,11 +18,13 @@ class NewTaskViewController: UIViewController {
     @IBOutlet weak var prioritySlider: UISlider!
     @IBOutlet weak var reminderTF: CustomTextField!
     @IBOutlet weak var sliderLabel: UILabel!
+    @IBOutlet weak var calendarDateTF: CustomTextField!
     
     var taskTitle = ""
     var taskInfo = ""
     var priorityValue = 5 as Float
     var reminderDate = ""
+    var calendarDate = ""
     var itemID = ""
     
     var notID: String?
@@ -35,6 +37,7 @@ class NewTaskViewController: UIViewController {
         taskNameTF.setup()
         taskInfoTF.setup()
         reminderTF.setup(datePicker: true)
+        calendarDateTF.setup(datePicker: true)
         setValues()
     }
     
@@ -48,6 +51,7 @@ class NewTaskViewController: UIViewController {
         prioritySlider.value = priorityValue
         setSlider()
         reminderTF.text = reminderDate
+        calendarDateTF.text = calendarDate
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
@@ -110,13 +114,13 @@ class NewTaskViewController: UIViewController {
     }
     
     func saveTask() {
-        var newTask = TaskItem(title: taskNameTF.text!, desc: taskInfoTF.text, done: false, priority: prioritySlider.value, notificationID: notID, notificationDate: reminderTF.text, taskID: itemID)
+        var newTask = TaskItem(title: taskNameTF.text!, desc: taskInfoTF.text, done: false, priority: prioritySlider.value, notificationID: notID, notificationDate: reminderTF.text, calendarDate: calendarDateTF.text, taskID: itemID)
         let userID = Auth.auth().currentUser?.uid ?? ""
         let taskDB = Database.database().reference().child("tasks/\(userID)/\(parentID)")
 
         if !editTask {
-            taskDB.childByAutoId().setValue(newTask.toAnyObject()) {
-                (error, ref) in
+        taskDB.childByAutoId().setValue(newTask.toAnyObject()) {
+            (error, ref) in
                 if error != nil {
                     print(error ?? "")
                 } else {

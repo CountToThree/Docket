@@ -41,7 +41,7 @@ class HomeViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(showContactVC), name: .showContact, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(logOutAction), name: .logOut, object: nil)
     }
-
+    
     //MARK: - TableView Setup Methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,6 +77,7 @@ class HomeViewController: UITableViewController {
     //MARK: - TableView Delegate Methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showTasksInList", sender: self)
+        NotificationCenter.default.post(name: .toggleSideMenu, object: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -100,14 +101,9 @@ class HomeViewController: UITableViewController {
     func loadFromDatabase() {
         let listDB = ref.child("users/\((Auth.auth().currentUser?.uid)!)")
         listDB.observe(.childAdded) { (snapshot) in
-            let snapshotValue = snapshot.value as? [String: AnyObject] ?? [:]
-
-            guard let listTitle = snapshotValue["name"] as? String else { return }
-            guard let listID = snapshotValue["id"] as? String else { return }
-            guard let color = snapshotValue["color"] as? String else { return }
-            guard let info = snapshotValue["info"] as? String else { return }
-            self.lists.append(ListItem(name: listTitle, color: color, infoText: info, listID: listID))
-
+            if let list = FirebaseApp.getListData(from: snapshot) {
+                self.lists.append(list)
+            }
             self.tableView.reloadData()
         }
     }

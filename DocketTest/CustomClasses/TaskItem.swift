@@ -15,9 +15,10 @@ struct TaskItem {
     var priority: Float
     var notificationID: String?
     var notificationDate: String?
+    var calendarDate: String?
     var taskID: String
     
     func toAnyObject() -> Any {
-        return ["title": title, "description": desc as Any, "completed": done, "priority": priority, "notificationID": notificationID as Any, "notificationDate": notificationDate as Any]
+        return ["title": title, "description": desc as Any, "completed": done, "priority": priority, "notificationID": notificationID as Any, "notificationDate": notificationDate as Any, "calendarDate": calendarDate as Any]
     }
 }
