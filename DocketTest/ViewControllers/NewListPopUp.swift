@@ -46,6 +46,8 @@ class NewListPopUp: UIViewController {
         let listDB = userRef.child(user).child(newItem.listID)
         listDB.setValue(newItem.toAnyObject()) {
             (error, ref) in
+            print("SET VALUE")
+
             if error != nil {
                 print(error ?? "")
             } else {
@@ -54,7 +56,6 @@ class NewListPopUp: UIViewController {
         }
         dismiss(animated: true, completion: nil)
     }
-    
 }
 
 extension NewListPopUp: UIPickerViewDelegate, UIPickerViewDataSource {

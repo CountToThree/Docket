@@ -12,25 +12,26 @@ class ContainerViewController: UIViewController {
     @IBOutlet weak var sideMenuConstraint: NSLayoutConstraint!
     @IBOutlet weak var sideMenuView: UIView!
     
-    var isMenuVisible = false
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(triggerSideMenu), name: .toggleSideMenu, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showSideMenu), name: .showSideMenu, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideSideMenu), name: .hideSideMenu, object: nil)
     }
     
-    @objc func triggerSideMenu() {
-        if isMenuVisible {
-            sideMenuConstraint.constant = -240
-            isMenuVisible = false
-        } else {
-            sideMenuConstraint.constant = 0
-            isMenuVisible = true
-        }
+    @objc func showSideMenu() {
+        sideMenuConstraint.constant = 0
+        
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
     }
     
+    @objc func hideSideMenu() {
+        sideMenuConstraint.constant = -240
+    
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
 }

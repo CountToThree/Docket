@@ -17,7 +17,9 @@ class TaskViewController: UITableViewController {
     var rowToEdit: Int!
     
     var selectedList: ListItem?
-        
+    
+    var didSelectRow = false
+    
     let userID = Auth.auth().currentUser?.uid
     let ref = Database.database().reference()
     
@@ -34,7 +36,6 @@ class TaskViewController: UITableViewController {
         let infoRef = ref.child("users/\(userID ?? "")/\(selectedList?.listID ?? "")")
         infoRef.updateChildValues(["info": infoText])
         NotificationCenter.default.post(name: .updateListInfo, object: nil)
-        
     }
 
     //MARK: - TableView Datasource Methods
@@ -80,6 +81,7 @@ class TaskViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tasks[indexPath.row].done = !tasks[indexPath.row].done
+        didSelectRow = true
         
         let childUpdates = ["tasks/\(userID ?? "")/\(selectedList?.listID ?? "")/\(tasks[indexPath.row].taskID)/completed": tasks[indexPath.row].done]
         ref.updateChildValues(childUpdates)
@@ -124,6 +126,7 @@ class TaskViewController: UITableViewController {
         let parentID = selectedList!.listID
         let taskDB = ref.child("tasks/\(userID ?? "")/\(parentID)")
         taskDB.observe(.childAdded) { (snapshot) in
+            print("task child added")
             if let task = FirebaseApp.getTaskData(from: snapshot) {
                 var counter = 0
                 for item in self.tasks {
@@ -140,18 +143,23 @@ class TaskViewController: UITableViewController {
         }
         
         taskDB.observe(.childChanged) { (snapshot) in
-            if let task = FirebaseApp.getTaskData(from: snapshot) {
-                var counter = 0
-                for item in self.tasks {
-                    if item.taskID == task.taskID {
-                        self.tasks.remove(at: counter)
+            print("task child changed")
+            if !self.didSelectRow {
+                if let task = FirebaseApp.getTaskData(from: snapshot) {
+                    var counter = 0
+                    for item in self.tasks {
+                        if item.taskID == task.taskID {
+                            self.tasks.remove(at: counter)
+                        }
+                        counter += 1
                     }
-                    counter += 1
+
+                    self.tasks.append(task)
+                    self.sortList()
+                    self.tableView.reloadData()
                 }
-                
-                self.tasks.append(task)
-                self.sortList()
-                self.tableView.reloadData()
+            } else {
+                self.didSelectRow = false
             }
         }
     }

@@ -188,17 +188,17 @@ class CalendarViewController: UIViewController {
         let taskDB = ref.child("tasks/\((Auth.auth().currentUser?.uid)!)/\(key)")
         taskDB.observe(.childAdded) { (snapshot) in
             if let task = FirebaseApp.getTaskData(from: snapshot) {
-                if task.calendarDate != nil {
+                if let tcalDate = task.calendarDate {
                     var desc: String? = nil
                     if let d = task.desc {
                         desc = d
                     }
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "dd/MM/yyyy hh:mm a"
-                    let calDate = dateFormatter.date(from: task.calendarDate!)
-                    let newCalItem = CalendarItem(title: task.title, desc: desc, color: color, time: calDate!)
+                    let calDate = dateFormatter.date(from: tcalDate)!
+                    let newCalItem = CalendarItem(title: task.title, desc: desc, color: color, time: calDate)
                     
-                    self.setTaskColor(date: calDate!, color: newCalItem.color)
+                    self.setTaskColor(date: calDate, color: newCalItem.color)
                     self.calendarItems.append(newCalItem)
                     self.sortList()
                 }

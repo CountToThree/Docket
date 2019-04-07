@@ -23,8 +23,8 @@ class NewTaskViewController: UIViewController {
     var taskTitle = ""
     var taskInfo = ""
     var priorityValue = 5 as Float
-    var reminderDate = ""
-    var calendarDate = ""
+    var reminderDate: String?
+    var calendarDate: String?
     var itemID = ""
     
     var notID: String?
@@ -62,7 +62,6 @@ class NewTaskViewController: UIViewController {
     
     @IBAction func sliderValueChanged(_ sender: Any) {
        setSlider()
-        
     }
     
     func setSlider() {
@@ -114,7 +113,17 @@ class NewTaskViewController: UIViewController {
     }
     
     func saveTask() {
-        var newTask = TaskItem(title: taskNameTF.text!, desc: taskInfoTF.text, done: false, priority: prioritySlider.value, notificationID: notID, notificationDate: reminderTF.text, calendarDate: calendarDateTF.text, taskID: itemID)
+        if taskNameTF.text == "" {
+            showErrorMessage(title: "Error", message: "You have to set a name.")
+            return
+        }
+        
+        calendarDate = calendarDateTF.text
+        if calendarDate == "" {
+            calendarDate = nil
+        }
+        
+        var newTask = TaskItem(title: taskNameTF.text!, desc: taskInfoTF.text, done: false, priority: prioritySlider.value, notificationID: notID, notificationDate: reminderTF.text, calendarDate: calendarDate, taskID: itemID)
         let userID = Auth.auth().currentUser?.uid ?? ""
         let taskDB = Database.database().reference().child("tasks/\(userID)/\(parentID)")
 
@@ -134,6 +143,12 @@ class NewTaskViewController: UIViewController {
             Database.database().reference().updateChildValues(childUpdates)
         }
         
+    }
+    
+    func showErrorMessage(title: String, message: String) {
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(ac, animated: true)
     }
     
     @IBAction func reminderEditingBegin(_ sender: Any) {

@@ -55,7 +55,7 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
         default:
             print("lists selected")
         }
-        NotificationCenter.default.post(name: .toggleSideMenu, object: nil)
+        NotificationCenter.default.post(name: .hideSideMenu, object: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

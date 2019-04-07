@@ -18,12 +18,14 @@ class HomeViewController: UITableViewController {
     var observer: NSObjectProtocol?
     var nextTitle = ""
     
+    var isSideMenuVisible = false
+    
     let ref = Database.database().reference()
     let userID = Auth.auth().currentUser?.uid
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let backBtnImage = UIImage(named: "backButtonIcon")
         navigationController?.navigationBar.barTintColor = UIColor.lightGreen
         
@@ -77,7 +79,6 @@ class HomeViewController: UITableViewController {
     //MARK: - TableView Delegate Methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showTasksInList", sender: self)
-        NotificationCenter.default.post(name: .toggleSideMenu, object: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -85,32 +86,48 @@ class HomeViewController: UITableViewController {
             let destinationVC = segue.destination as! TaskViewController
             
             if let indexPath = tableView.indexPathForSelectedRow {
+                print("\(indexPath.row)", " GHSAF ", "\(lists.count)")
                 destinationVC.selectedList = lists[indexPath.row]
                 destinationVC.title = lists[indexPath.row].name
             }
+        }
+        
+        if isSideMenuVisible {
+            isSideMenuVisible = false
+            NotificationCenter.default.post(name: .hideSideMenu, object: nil)
         }
     }
     
     //MARK: - Button Setup Methods
     
     @IBAction func showMenu(_ sender: UIBarButtonItem) {
-        NotificationCenter.default.post(name: .toggleSideMenu, object: nil)
+        if isSideMenuVisible {
+            isSideMenuVisible = false
+            NotificationCenter.default.post(name: .hideSideMenu, object: nil)
+        } else {
+            isSideMenuVisible = true
+            NotificationCenter.default.post(name: .showSideMenu, object: nil)
+        }
+        
     }
 
     //MARK: - Model Manipulation Methods
     func loadFromDatabase() {
+        
         let listDB = ref.child("users/\((Auth.auth().currentUser?.uid)!)")
         listDB.observe(.childAdded) { (snapshot) in
             if let list = FirebaseApp.getListData(from: snapshot) {
                 self.lists.append(list)
+                self.tableView.reloadData()
             }
-            self.tableView.reloadData()
         }
     }
     
     //MARK: - Notification Selector Methods
     @objc func reloadInfos() {
         lists = []
+        let listDB = ref.child("users/\((Auth.auth().currentUser?.uid)!)")
+        listDB.removeAllObservers()
         loadFromDatabase()
     }
     

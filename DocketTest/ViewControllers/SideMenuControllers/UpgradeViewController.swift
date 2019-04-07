@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import StoreKit
 
 class UpgradeViewController: UIViewController {
+    
+    public static var premiumVersion = "com.maxK.premium.Version"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +21,6 @@ class UpgradeViewController: UIViewController {
     //MARK: - Button Setups
     @IBAction func UpgradeBtnPressed(_ sender: Any) {
         // start Puchases
-        
         
         
     }
