@@ -58,7 +58,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.6470588235294118" green="0.8784313725490196" blue="0.69019607843137254" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.027450980392156862" green="0.4823529411764706" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="ucp-fq-ILi" firstAttribute="top" secondItem="Z0t-mA-rXT" secondAttribute="bottom" constant="8" id="5hh-2h-xwp"/>
                                     <constraint firstItem="Z0t-mA-rXT" firstAttribute="centerX" secondItem="cVR-52-AwI" secondAttribute="centerX" id="UNt-2I-f3U"/>
@@ -1062,19 +1062,28 @@
                                     <constraint firstAttribute="height" constant="39" id="l2L-2R-Qdu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="10"/>
-                                <state key="normal" title="UPGRADE NOW">
+                                <state key="normal" title="COMING SOON">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="UpgradeBtnPressed:" destination="Ace-JL-xxy" eventType="touchUpInside" id="B8Y-0L-kFG"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The premium version is coming soon. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKh-fd-Idl">
+                                <rect key="frame" x="14" y="80" width="290" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="CCJ-qw-iN9" firstAttribute="trailing" secondItem="QRB-xs-9T5" secondAttribute="trailing" constant="26" id="2ny-jo-07c"/>
                             <constraint firstItem="CCJ-qw-iN9" firstAttribute="bottom" secondItem="QRB-xs-9T5" secondAttribute="bottom" constant="20" id="C0E-2G-7W2"/>
+                            <constraint firstItem="CCJ-qw-iN9" firstAttribute="trailing" secondItem="mKh-fd-Idl" secondAttribute="trailing" constant="16" id="FMv-5T-ZRa"/>
                             <constraint firstItem="QRB-xs-9T5" firstAttribute="leading" secondItem="CCJ-qw-iN9" secondAttribute="leading" constant="25" id="GYa-bb-RFE"/>
+                            <constraint firstItem="mKh-fd-Idl" firstAttribute="top" secondItem="CCJ-qw-iN9" secondAttribute="top" constant="16" id="ebp-m2-Ov0"/>
+                            <constraint firstItem="mKh-fd-Idl" firstAttribute="leading" secondItem="CCJ-qw-iN9" secondAttribute="leading" constant="14" id="qSz-zt-flG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CCJ-qw-iN9"/>
                     </view>
@@ -1082,7 +1091,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s5t-iJ-1Mi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1652" y="-1539"/>
+            <point key="canvasLocation" x="1651.875" y="-1539.0845070422536"/>
         </scene>
         <!--PROFILE-->
         <scene sceneID="JLn-an-aIu">
@@ -1642,6 +1651,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Bhc-eJ-cHv"/>
-        <segue reference="N2f-wL-Foi"/>
+        <segue reference="2B6-ZK-mjC"/>
     </inferredMetricsTieBreakers>
 </document>

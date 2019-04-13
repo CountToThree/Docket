@@ -43,10 +43,10 @@ class ContactViewController: UIViewController, MFMailComposeViewControllerDelega
             errorLabel.textColor = UIColor.lightRed
             errorLabel.text = "Failed to send E-Mail."
         case .saved:
-            errorLabel.textColor = UIColor.lightGreen
+            errorLabel.textColor = UIColor.mainColor
             errorLabel.text = "E-Mail saved successfully."
         case .sent:
-            errorLabel.textColor = UIColor.lightGreen
+            errorLabel.textColor = UIColor.mainColor
             errorLabel.text = "E-Mail sent successfully."
 
         }

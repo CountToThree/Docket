@@ -18,6 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hintergrund" translatesAutoresizingMaskIntoConstraints="NO" id="kdH-jA-Yqj">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WhiteIcon" translatesAutoresizingMaskIntoConstraints="NO" id="whY-fU-zOI">
                                 <rect key="frame" x="125.5" y="256" width="124" height="109"/>
                                 <constraints>
@@ -33,11 +36,15 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.6470588235294118" green="0.8784313725490196" blue="0.69019607843137254" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="kdH-jA-Yqj" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="1mZ-Cn-EjG"/>
                             <constraint firstItem="whY-fU-zOI" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="E9j-4S-kuv"/>
+                            <constraint firstItem="kdH-jA-Yqj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZLX-hX-Rru"/>
                             <constraint firstItem="whY-fU-zOI" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-23" id="env-om-ff5"/>
+                            <constraint firstItem="kdH-jA-Yqj" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="hjN-x3-hNr"/>
                             <constraint firstItem="96s-MM-dii" firstAttribute="top" secondItem="whY-fU-zOI" secondAttribute="bottom" constant="8" id="roc-Wk-PCw"/>
+                            <constraint firstItem="kdH-jA-Yqj" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="vAi-1m-AW4"/>
                             <constraint firstItem="96s-MM-dii" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="wmQ-MT-Fzb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -51,5 +58,6 @@
     <resources>
         <image name="WhiteDocketText" width="433" height="108"/>
         <image name="WhiteIcon" width="185" height="187"/>
+        <image name="hintergrund" width="2344" height="5075"/>
     </resources>
 </document>

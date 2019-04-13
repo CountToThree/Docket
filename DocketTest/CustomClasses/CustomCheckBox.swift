@@ -13,7 +13,7 @@ class CustomCheckBox: UIImageView {
     func setup() {
         self.layer.cornerRadius = self.bounds.height / 2
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.lightGreen.cgColor
+        self.layer.borderColor = UIColor.mainColor.cgColor
         self.layer.masksToBounds = true
         self.image = UIImage(named: "checkMark")
     }

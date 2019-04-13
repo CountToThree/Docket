@@ -24,6 +24,7 @@ class FirstViewController: UIViewController {
         LogInBtn.setup()
         SignUpBtn.setup()
         greenBGView.bounds.size.width = self.view.bounds.width
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
     
     override func viewDidAppear(_ animated: Bool) {

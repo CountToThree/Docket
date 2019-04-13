@@ -29,7 +29,7 @@ class NewListPopUp: UIViewController {
     
     func pickerViewSetup() {
         colorView.layer.cornerRadius = colorView.bounds.width / 2
-        colorView.backgroundColor = UIColor.lightGreen
+        colorView.backgroundColor = UIColor.mainColor
         
         pickerView.delegate = self
         colorTextField.inputView = pickerView

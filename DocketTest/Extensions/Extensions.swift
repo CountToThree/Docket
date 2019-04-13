@@ -28,7 +28,7 @@ extension Notification.Name {
 }
 
 extension UIColor {
-    static let lightGreen = UIColor(red: 165/255, green: 209/255, blue: 176/255, alpha: 1.0)
+    static let mainColor = UIColor(red: 7/255, green: 123/255, blue: 55/255, alpha: 1.0)
     static let lightRed = UIColor(red: 249/255, green: 122/255, blue: 122/255, alpha: 1.0)
     static let darkGreen = UIColor(red: 140/255, green: 193/255, blue: 149/255, alpha: 1.0)
     
@@ -44,11 +44,11 @@ extension UIColor {
         case "Yellow":
             return UIColor(red: 226/255, green: 215/255, blue: 0/255, alpha: 1.0)
         case "Green":
-            return UIColor.lightGreen
+            return UIColor.mainColor
         case "Black":
             return UIColor.black
         default:
-            return UIColor.lightGreen
+            return UIColor.mainColor
         }
     }
 }

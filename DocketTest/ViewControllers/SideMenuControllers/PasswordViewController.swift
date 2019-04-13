@@ -50,7 +50,7 @@ class PasswordViewController: UIViewController {
             if error != nil {
                 self.errorLabel.text = error!.localizedDescription
             } else {
-                self.errorLabel.textColor = UIColor.lightGreen
+                self.errorLabel.textColor = UIColor.mainColor
                 self.errorLabel.text = "Password updated successfully."
             }
         })

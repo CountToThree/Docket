@@ -15,7 +15,7 @@ class CustomTextField: UITextField {
     
     func setup(datePicker: Bool? = nil) {
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.lightGreen.cgColor
+        self.layer.borderColor = UIColor.mainColor.cgColor
         self.layer.cornerRadius = 1
         self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: self.frame.height))
         self.leftViewMode = .always
@@ -36,8 +36,8 @@ class CustomTextField: UITextField {
             done.action = #selector(self.datePickerDoneAction)
             setDatePicker()
         }
-        done.tintColor = UIColor.lightGreen
-        cancel.tintColor = UIColor.lightGreen
+        done.tintColor = UIColor.mainColor
+        cancel.tintColor = UIColor.mainColor
         let items = [cancel, flexSpace, done]
         doneToolbar.items = items
         doneToolbar.sizeToFit()

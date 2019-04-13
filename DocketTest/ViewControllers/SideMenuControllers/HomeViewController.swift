@@ -27,7 +27,7 @@ class HomeViewController: UITableViewController {
         super.viewDidLoad()
         
         let backBtnImage = UIImage(named: "backButtonIcon")
-        navigationController?.navigationBar.barTintColor = UIColor.lightGreen
+        navigationController?.navigationBar.barTintColor = UIColor.mainColor
         
         navigationController?.navigationBar.backIndicatorImage = backBtnImage
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = backBtnImage
@@ -56,6 +56,8 @@ class HomeViewController: UITableViewController {
         cell.ListStatusLabel.text = lists[indexPath.row].infoText
         cell.ListColorView.backgroundColor = UIColor.setColor(at: lists[indexPath.row].color)
         cell.ListColorView.layer.cornerRadius = cell.ListColorView.bounds.width / 2
+        
+        tableView.isUserInteractionEnabled = true
         return cell
     }
     
@@ -126,6 +128,7 @@ class HomeViewController: UITableViewController {
     //MARK: - Notification Selector Methods
     @objc func reloadInfos() {
         lists = []
+        tableView.isUserInteractionEnabled = false
         let listDB = ref.child("users/\((Auth.auth().currentUser?.uid)!)")
         listDB.removeAllObservers()
         loadFromDatabase()

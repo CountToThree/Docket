@@ -51,7 +51,7 @@ class ProfileViewController: UIViewController {
                     self.errorLabel.textColor = UIColor.lightRed
                     self.errorLabel.text = error?.localizedDescription
                 } else {
-                    self.errorLabel.textColor = UIColor.lightGreen
+                    self.errorLabel.textColor = UIColor.mainColor
                     self.errorLabel.text = "Saved successfully."
                 }
             })
@@ -59,7 +59,7 @@ class ProfileViewController: UIViewController {
         if editNameTF.text != name && editNameTF.text != "" {
             let nameRef = ref.child("users/\(Auth.auth().currentUser?.uid ?? "")/name/firstName")
             nameRef.setValue(editNameTF.text)
-            errorLabel.textColor = UIColor.lightGreen
+            errorLabel.textColor = UIColor.mainColor
             errorLabel.text = "Saved successfully"
             NotificationCenter.default.post(name: .updateFirstName, object: nil)
         }
