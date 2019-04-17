@@ -17,6 +17,7 @@ class CalendarCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        dayLabel.textColor = UIColor.mainColor
         leftColorView.layer.cornerRadius = leftColorView.frame.width / 2
         midColorView.layer.cornerRadius = midColorView.frame.width / 2
         rightColorView.layer.cornerRadius = rightColorView.frame.width / 2

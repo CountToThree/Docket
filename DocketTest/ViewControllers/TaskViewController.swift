@@ -108,6 +108,9 @@ class TaskViewController: UITableViewController {
                     UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
                 }
             }
+            if let calDate = tasks[rowToEdit].calendarDate {
+                destinationVC.calendarDate = calDate
+            }
             destinationVC.editTask = true
         } else if segue.identifier == "showNewTask" {
             destinationVC.parentID = (selectedList?.listID)!

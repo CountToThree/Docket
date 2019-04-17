@@ -280,7 +280,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     //MARK: - selection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CalendarCell
-        cell.dayLabel.textColor = UIColor.mainColor
+        cell.dayLabel.textColor = UIColor.lightGreen
         selectedItems = []
         for item in calendarItems {
             let date = item.time
