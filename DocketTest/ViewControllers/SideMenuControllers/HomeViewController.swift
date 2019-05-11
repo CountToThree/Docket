@@ -23,6 +23,9 @@ class HomeViewController: UITableViewController {
     let ref = Database.database().reference()
     let userID = Auth.auth().currentUser?.uid
 
+    var checkCon = false
+    var connected = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,6 +38,7 @@ class HomeViewController: UITableViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         loadFromDatabase()
+        checkConnection()
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadInfos), name: .updateListInfo, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showUpgradeVC), name: .showUpgrade, object: nil)
@@ -42,6 +46,10 @@ class HomeViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(showCalendarVC), name: .showCalendar, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showContactVC), name: .showContact, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(logOutAction), name: .logOut, object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        checkCon = true
     }
     
     //MARK: - TableView Setup Methods
@@ -88,7 +96,6 @@ class HomeViewController: UITableViewController {
             let destinationVC = segue.destination as! TaskViewController
             
             if let indexPath = tableView.indexPathForSelectedRow {
-                print("\(indexPath.row)", " GHSAF ", "\(lists.count)")
                 destinationVC.selectedList = lists[indexPath.row]
                 destinationVC.title = lists[indexPath.row].name
             }

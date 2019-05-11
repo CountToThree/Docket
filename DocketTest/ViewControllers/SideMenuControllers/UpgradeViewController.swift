@@ -20,7 +20,7 @@ class UpgradeViewController: UIViewController {
     
     //MARK: - Button Setups
     @IBAction func UpgradeBtnPressed(_ sender: Any) {
-        // start Puchases
+        // start Purchases
         
         
     }

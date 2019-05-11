@@ -46,10 +46,10 @@ class NewListPopUp: UIViewController {
         let listDB = userRef.child(user).child(newItem.listID)
         listDB.setValue(newItem.toAnyObject()) {
             (error, ref) in
-            print("SET VALUE")
-
             if error != nil {
-                print(error ?? "")
+                let ac = UIAlertController(title: "An error occurred", message: error?.localizedDescription, preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(ac, animated: true)
             } else {
                 print("Message saved successfully")
             }
