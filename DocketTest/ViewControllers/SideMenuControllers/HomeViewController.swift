@@ -38,7 +38,6 @@ class HomeViewController: UITableViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         loadFromDatabase()
-        checkConnection()
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadInfos), name: .updateListInfo, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showUpgradeVC), name: .showUpgrade, object: nil)
@@ -162,7 +161,9 @@ class HomeViewController: UITableViewController {
             try Auth.auth().signOut()
             self.performSegue(withIdentifier: "unwindToFirstVC", sender: self)
         } catch {
-            print("Error: There was a error signing out!")
+            let ac = UIAlertController(title: "Can not sign out!", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(ac, animated: true, completion: nil)
         }
     }
 }

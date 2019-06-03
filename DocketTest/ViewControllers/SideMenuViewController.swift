@@ -21,6 +21,7 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         setFirstName()
+        menuTableView.backgroundColor = .darkGreen
         profileImage.image = UIImage(named: "ProfileIcon")
         profileImage.layer.cornerRadius = profileImage.bounds.width / 2
         menuTableView.contentInset = UIEdgeInsets(top: 15,left: 0,bottom: 0,right: 0)

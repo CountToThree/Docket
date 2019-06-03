@@ -16,6 +16,5 @@ class CalendarTableCell: UITableViewCell {
     
     override func awakeFromNib() {
         colorView.layer.cornerRadius = colorView.frame.height / 2
-        
     }
 }

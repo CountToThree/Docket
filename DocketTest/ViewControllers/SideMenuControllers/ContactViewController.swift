@@ -17,13 +17,13 @@ class ContactViewController: UIViewController, MFMailComposeViewControllerDelega
         
         guard MFMailComposeViewController.canSendMail() else {
             errorLabel.textColor = UIColor.lightRed
-            errorLabel.text = "You can not send E-Mails from this device."
+            errorLabel.text = "You can not send E-mails from this device."
             return }
         errorLabel.text = ""
         
         let composer = MFMailComposeViewController()
         composer.mailComposeDelegate = self
-    composer.setToRecipients(["info.tasklist@gmail.com"])
+        composer.setToRecipients(["info.tasklist@gmail.com"])
         present(composer, animated: true, completion: nil)
         
     }
@@ -41,13 +41,13 @@ class ContactViewController: UIViewController, MFMailComposeViewControllerDelega
             print("cancelled")
         case .failed:
             errorLabel.textColor = UIColor.lightRed
-            errorLabel.text = "Failed to send E-Mail."
+            errorLabel.text = "Failed to send E-mail."
         case .saved:
             errorLabel.textColor = UIColor.mainColor
-            errorLabel.text = "E-Mail saved successfully."
+            errorLabel.text = "E-mail saved successfully."
         case .sent:
             errorLabel.textColor = UIColor.mainColor
-            errorLabel.text = "E-Mail sent successfully."
+            errorLabel.text = "E-mail sent successfully."
 
         }
         controller.dismiss(animated: true, completion: nil)

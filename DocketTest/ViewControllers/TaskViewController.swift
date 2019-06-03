@@ -146,7 +146,6 @@ class TaskViewController: UITableViewController {
         }
         
         taskDB.observe(.childChanged) { (snapshot) in
-            print("task child changed")
             if !self.didSelectRow {
                 if let task = FirebaseApp.getTaskData(from: snapshot) {
                     var counter = 0

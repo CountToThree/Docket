@@ -70,7 +70,6 @@ class CustomTextField: UITextField {
     func moveSuperViewUp() {
         UIView.animate(withDuration: 0.4, delay: 0.3, options: .curveEaseInOut, animations: {
             self.superview!.frame.origin.y = self.superview!.frame.origin.y / 2
-//            self.superview?.center.y = self.superview!.center.y / 2
         }, completion: nil)
     }
     

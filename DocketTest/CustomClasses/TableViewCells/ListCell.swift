@@ -12,5 +12,4 @@ class ListCell: UITableViewCell {
     @IBOutlet weak var ListTitleLabel: UILabel!
     @IBOutlet weak var ListStatusLabel: UILabel!
     @IBOutlet weak var ListColorView: UIView!
-    
 }

@@ -32,7 +32,6 @@ class CalendarViewController: UIViewController {
     var myDate = Date()
     var cellHeight: CGFloat!
     var days = [Int]()
-    var monthChanged = false
     
     var calendarItems = [CalendarItem]()
     var thisMonthItems = [CalendarItem]()
@@ -88,22 +87,21 @@ class CalendarViewController: UIViewController {
     }
     
     func monthChangedActions() {
-        monthChanged = true
-        counter = 0
         selectedItems = []
         monthLabel.text = "\(months[thisMonth]) \(thisYear)"
         setNewDate(date: "\(thisMonth + 1)-01-\(thisYear)")
+        getMonthTasks()
         dayesCollectionView.reloadData()
         tasksTableView.reloadData()
         setConstrHeight()
     }
     
     func getMonthTasks() {
+        thisMonthItems = []
         for item in calendarItems {
             let comp = Calendar.current.dateComponents([.month, .year], from: item.time)
             if comp.month == thisMonth+1 && comp.year == thisYear {
                 thisMonthItems.append(item)
-                setTaskColor(date: item.time, color: item.color)
             }
         }
     }
@@ -217,7 +215,6 @@ class CalendarViewController: UIViewController {
     func sortList() {
         calendarItems = calendarItems.sorted(by: { $1.time.compare($0.time) == .orderedDescending})
     }
-    var counter = 0
 }
 
 extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -245,14 +242,20 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         cell.midColorView.backgroundColor = .white
         cell.rightColorView.backgroundColor = .white
         
-        
-        if !monthChanged {
-            
-        }
-        counter += 1
-        if counter == days.count && monthChanged {
-            getMonthTasks()
-            monthChanged = false
+        for item in thisMonthItems {
+            if Calendar.current.component(Calendar.Component.day, from: item.time) == days[indexPath.row] {
+                if cell.leftColorView.backgroundColor == .white {
+                    cell.leftColorView.backgroundColor = item.color
+                } else if cell.midColorView.backgroundColor == .white {
+                    if cell.leftColorView.backgroundColor != item.color {
+                        cell.midColorView.backgroundColor = item.color
+                    }
+                } else if cell.rightColorView.backgroundColor == .white {
+                    if cell.leftColorView.backgroundColor != item.color && cell.midColorView.backgroundColor != item.color {
+                        cell.rightColorView.backgroundColor = item.color
+                    }
+                }
+            }
         }
         return cell
     }

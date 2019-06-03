@@ -30,7 +30,7 @@ extension Notification.Name {
 extension UIColor {
     static let mainColor = UIColor(red: 7/255, green: 123/255, blue: 55/255, alpha: 1.0)
     static let lightRed = UIColor(red: 249/255, green: 122/255, blue: 122/255, alpha: 1.0)
-    static let darkGreen = UIColor(red: 140/255, green: 193/255, blue: 149/255, alpha: 1.0)
+    static let darkGreen = UIColor(red: 7/255, green: 123/255, blue: 55/255, alpha: 0.75)
     static let lightGreen = UIColor(red: 88/255, green: 178/255, blue: 74/255, alpha: 1.0)
     
     static func setColor(at row: String) -> UIColor {
@@ -96,11 +96,5 @@ extension FirebaseApp {
         guard let color = snapshotValue["color"] as? String else { return nil }
         guard let info = snapshotValue["info"] as? String else { return nil }
         return ListItem(name: listTitle, color: color, infoText: info, listID: listID)
-    }
-    
-    static func getCalendarData(from snap: DataSnapshot) -> CalendarItem? {
-        //let snapshotValue = snap.value as? [String: AnyObject] ?? [:]
-        return nil
-       // guard let title = snapshotValue[""]
     }
 }

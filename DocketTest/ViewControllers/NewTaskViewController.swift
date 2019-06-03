@@ -87,7 +87,6 @@ class NewTaskViewController: UIViewController {
     
     func setNotification() {
         if reminderTF.text != "" {
-            print("Notification")
             
             //MARK: Notification Content
             let content = UNMutableNotificationContent()
@@ -106,7 +105,7 @@ class NewTaskViewController: UIViewController {
             
             UNUserNotificationCenter.current().add(request) { (error) in
                 if let error = error {
-                    print("Error \(error.localizedDescription)")
+                    self.showErrorMessage(title: "Error", message: error.localizedDescription)
                 }
             }
         }
@@ -131,13 +130,12 @@ class NewTaskViewController: UIViewController {
         taskDB.childByAutoId().setValue(newTask.toAnyObject()) {
             (error, ref) in
                 if error != nil {
-                    print(error ?? "")
+                    self.showErrorMessage(title: "Error", message: error?.localizedDescription ?? "Could not save data")
                 } else {
                     print("Message saved successfully")
                 }
             }
         } else {
-            print("Update Values")
             newTask.taskID = itemID
             let childUpdates = ["tasks/\(userID)/\(parentID)/\(itemID)/": newTask.toAnyObject()]
             Database.database().reference().updateChildValues(childUpdates)
